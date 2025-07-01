@@ -1,24 +1,20 @@
 <template>
   <v-container fluid>
     <!-- Hero Section -->
-    <v-row class="align-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
+    <v-row class="align-center justify-center py-8 bg-gradient-to-br from-blue-50 to-indigo-100">
       <v-col cols="12" md="8" class="text-center">
         <v-img
           :src="heroImage"
           alt="MemeJPG Logo"
-          class="mx-auto mb-8"
-          max-width="200"
+          class="mx-auto mb-6"
+          max-width="120"
           contain
         ></v-img>
-        
-        <h1 class="text-h2 font-weight-bold text-primary mb-4">
-          Welcome to MemeJPG
-        </h1>
-        
-        <p class="text-h5 text-grey-darken-1 mb-8">
-          Handle all your image editing needs
-        </p>
-        
+
+        <h1 class="text-h3 font-weight-bold text-primary mb-3">Welcome to MemeJPG</h1>
+
+        <p class="text-h6 text-grey-darken-1 mb-6">Handle all your image editing needs</p>
+
         <v-btn
           color="primary"
           size="large"
@@ -34,36 +30,22 @@
     <!-- Tools Section -->
     <v-row id="tools-section" class="py-16">
       <v-col cols="12">
-        <h2 class="text-h3 text-center font-weight-bold mb-12">
-          Our Image Editing Tools
-        </h2>
+        <h2 class="text-h3 text-center font-weight-bold mb-12">Our Image Editing Tools</h2>
       </v-col>
-      
-      <v-col
-        v-for="tool in tools"
-        :key="tool.id"
-        cols="12"
-        sm="6"
-        md="4"
-        lg="3"
-      >
-        <v-card
-          class="mx-auto tool-card"
-          max-width="350"
-          elevation="4"
-          hover
-        >
+
+      <v-col v-for="tool in tools" :key="tool.id" cols="12" sm="6" md="4" lg="3">
+        <v-card class="mx-auto tool-card" max-width="350" elevation="4" hover>
           <v-card-item>
             <div class="d-flex align-center justify-center mb-4">
               <v-avatar size="80" color="primary">
                 <v-icon size="40" color="white">{{ tool.icon }}</v-icon>
               </v-avatar>
             </div>
-            
+
             <v-card-title class="text-center">
               {{ tool.name }}
             </v-card-title>
-            
+
             <v-card-subtitle class="text-center">
               {{ tool.description }}
             </v-card-subtitle>
@@ -87,26 +69,19 @@
     <!-- Features Section -->
     <v-row class="py-16 bg-grey-lighten-4">
       <v-col cols="12">
-        <h2 class="text-h3 text-center font-weight-bold mb-12">
-          Why Choose MemeJPG?
-        </h2>
+        <h2 class="text-h3 text-center font-weight-bold mb-12">Why Choose MemeJPG?</h2>
       </v-col>
-      
-      <v-col
-        v-for="feature in features"
-        :key="feature.title"
-        cols="12"
-        md="4"
-      >
+
+      <v-col v-for="feature in features" :key="feature.title" cols="12" md="4">
         <div class="text-center">
           <v-avatar size="100" color="secondary" class="mb-4">
             <v-icon size="50" color="white">{{ feature.icon }}</v-icon>
           </v-avatar>
-          
+
           <h3 class="text-h5 font-weight-bold mb-3">
             {{ feature.title }}
           </h3>
-          
+
           <p class="text-body-1 text-grey-darken-1">
             {{ feature.description }}
           </p>
@@ -211,11 +186,5 @@ const scrollToTools = () => {
 
 .tool-card:hover {
   transform: translateY(-5px);
-}
-
-.min-h-screen {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
 }
 </style>
