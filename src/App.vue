@@ -1,22 +1,39 @@
 <template>
   <v-app>
     <v-app-bar elevation="2" color="primary">
-      <v-app-bar-title class="text-h5 font-weight-bold">
-        MemeJPG
-      </v-app-bar-title>
-      
-      <v-spacer></v-spacer>
-      
-      <v-btn
-        v-for="link in navigation"
-        :key="link.name"
-        :to="link.path"
-        variant="text"
-        color="white"
-        class="mx-2"
-      >
-        {{ link.name }}
-      </v-btn>
+      <v-container fluid class="d-flex align-center pa-0">
+        <div class="d-flex align-center">
+          <v-img
+            src="/logo.svg"
+            alt="MemeJPG Logo"
+            width="40"
+            height="40"
+            class="mr-3 flex-shrink-0"
+          ></v-img>
+
+          <div class="d-flex flex-column">
+            <v-app-bar-title class="text-h5 font-weight-bold mb-0 pa-0">MemeJPG</v-app-bar-title>
+            <div class="text-caption text-blue-lighten-3">{{ $t('nav.slogan') }}</div>
+          </div>
+        </div>
+
+        <v-spacer></v-spacer>
+
+        <div class="d-flex align-center">
+          <v-btn
+            v-for="link in navigation"
+            :key="link.name"
+            :to="link.path"
+            variant="text"
+            color="white"
+            class="mx-2"
+          >
+            {{ $t(link.name) }}
+          </v-btn>
+
+          <LanguageSwitcher />
+        </div>
+      </v-container>
     </v-app-bar>
 
     <v-main>
@@ -37,11 +54,11 @@
           <v-icon>{{ icon.icon }}</v-icon>
         </v-btn>
       </div>
-      
+
       <v-divider class="my-4"></v-divider>
-      
+
       <div class="text-body-2 pb-4">
-        © {{ new Date().getFullYear() }} MemeJPG - Handle all your image editing needs.
+        © {{ new Date().getFullYear() }} {{ $t('footer.copyright') }}
       </div>
     </v-footer>
   </v-app>
@@ -49,10 +66,11 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
+import LanguageSwitcher from './components/LanguageSwitcher.vue'
 
 const navigation = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
+  { name: 'nav.home', path: '/' },
+  { name: 'nav.about', path: '/about' },
 ]
 
 const socialIcons = [

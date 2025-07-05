@@ -11,9 +11,9 @@
           contain
         ></v-img>
 
-        <h1 class="text-h3 font-weight-bold text-primary mb-3">Welcome to MemeJPG</h1>
+        <h1 class="text-h3 font-weight-bold text-primary mb-3">{{ $t('hero.title') }}</h1>
 
-        <p class="text-h6 text-grey-darken-1 mb-6">Handle all your image editing needs</p>
+        <p class="text-h6 text-grey-darken-1 mb-6">{{ $t('hero.subtitle') }}</p>
 
         <v-btn
           color="primary"
@@ -22,7 +22,7 @@
           prepend-icon="mdi-rocket-launch"
           @click="scrollToTools"
         >
-          Explore Tools
+          {{ $t('hero.exploreTools') }}
         </v-btn>
       </v-col>
     </v-row>
@@ -30,7 +30,7 @@
     <!-- Tools Section -->
     <v-row id="tools-section" class="py-16">
       <v-col cols="12">
-        <h2 class="text-h3 text-center font-weight-bold mb-12">Our Image Editing Tools</h2>
+        <h2 class="text-h3 text-center font-weight-bold mb-12">{{ $t('tools.title') }}</h2>
       </v-col>
 
       <v-col v-for="tool in tools" :key="tool.id" cols="12" sm="6" md="4" lg="3">
@@ -43,11 +43,11 @@
             </div>
 
             <v-card-title class="text-center">
-              {{ tool.name }}
+              {{ $t(tool.nameKey) }}
             </v-card-title>
 
             <v-card-subtitle class="text-center">
-              {{ tool.description }}
+              {{ $t(tool.descriptionKey) }}
             </v-card-subtitle>
           </v-card-item>
 
@@ -69,21 +69,21 @@
     <!-- Features Section -->
     <v-row class="py-16 bg-grey-lighten-4">
       <v-col cols="12">
-        <h2 class="text-h3 text-center font-weight-bold mb-12">Why Choose MemeJPG?</h2>
+        <h2 class="text-h3 text-center font-weight-bold mb-12">{{ $t('features.title') }}</h2>
       </v-col>
 
-      <v-col v-for="feature in features" :key="feature.title" cols="12" md="4">
+      <v-col v-for="feature in features" :key="feature.titleKey" cols="12" md="4">
         <div class="text-center">
           <v-avatar size="100" color="secondary" class="mb-4">
             <v-icon size="50" color="white">{{ feature.icon }}</v-icon>
           </v-avatar>
 
           <h3 class="text-h5 font-weight-bold mb-3">
-            {{ feature.title }}
+            {{ $t(feature.titleKey) }}
           </h3>
 
           <p class="text-body-1 text-grey-darken-1">
-            {{ feature.description }}
+            {{ $t(feature.descriptionKey) }}
           </p>
         </div>
       </v-col>
@@ -94,81 +94,89 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const heroImage = '/favicon.ico'
+const heroImage = '/logo-large.svg'
 
 const tools = ref([
   {
     id: 1,
-    name: 'Background Remover',
-    description: 'Remove backgrounds from images in batches automatically',
+    nameKey: 'tools.backgroundRemover.name',
+    descriptionKey: 'tools.backgroundRemover.description',
     icon: 'mdi-image-filter-hdr',
     url: 'https://removebg.memejpg.com/',
     available: true,
   },
   {
     id: 2,
-    name: 'Font Compressor',
-    description: 'Compress font package sizes for better web performance',
+    nameKey: 'tools.fontCompressor.name',
+    descriptionKey: 'tools.fontCompressor.description',
     icon: 'mdi-format-font',
     url: 'https://fontcompressor.memejpg.com/',
     available: true,
   },
   {
     id: 3,
-    name: 'Image Renamer',
-    description: 'Rename multiple images in batches efficiently',
+    nameKey: 'tools.imageRenamer.name',
+    descriptionKey: 'tools.imageRenamer.description',
     icon: 'mdi-rename-box',
     url: 'https://rename.memejpg.com/',
     available: true,
   },
   {
     id: 4,
-    name: 'Image Resizer',
-    description: 'Resize and crop images in batches to specific dimensions',
+    nameKey: 'tools.imageResizer.name',
+    descriptionKey: 'tools.imageResizer.description',
     icon: 'mdi-resize',
     url: 'https://resize.memejpg.com/',
     available: true,
   },
   {
     id: 5,
-    name: 'Image Compressor',
-    description: 'Compress image file sizes in batches without losing quality',
+    nameKey: 'tools.imageCompressor.name',
+    descriptionKey: 'tools.imageCompressor.description',
     icon: 'mdi-compress',
     url: 'https://compress.memejpg.com/',
     available: true,
   },
   {
     id: 6,
-    name: 'ICO Converter',
-    description: 'Convert images to ICO format for favicon creation',
+    nameKey: 'tools.icoConverter.name',
+    descriptionKey: 'tools.icoConverter.description',
     icon: 'mdi-file-image',
     url: 'https://ico.memejpg.com/',
     available: true,
   },
   {
     id: 7,
-    name: 'Image Beautifier',
-    description: 'Enhance and beautify multiple images with AI filters',
+    nameKey: 'tools.imageBeautifier.name',
+    descriptionKey: 'tools.imageBeautifier.description',
     icon: 'mdi-auto-fix',
     url: 'https://beauty.memejpg.com/',
+    available: true,
+  },
+  {
+    id: 8,
+    nameKey: 'tools.privateDomainTrafficGenerator.name',
+    descriptionKey: 'tools.privateDomainTrafficGenerator.description',
+    icon: 'mdi-chart-line',
+    url: 'https://siyu.memejpg.com/',
     available: true,
   },
 ])
 
 const features = ref([
   {
-    title: 'Fast & Efficient',
-    description: 'Lightning-fast processing with optimized algorithms for quick results.',
+    titleKey: 'features.fast.title',
+    descriptionKey: 'features.fast.description',
     icon: 'mdi-lightning-bolt',
   },
   {
-    title: 'Privacy First',
-    description: 'All processing happens in your browser. Your images never leave your device.',
+    titleKey: 'features.privacy.title',
+    descriptionKey: 'features.privacy.description',
     icon: 'mdi-shield-check',
   },
   {
-    title: 'Free to Use',
-    description: 'All our tools are completely free with no hidden costs or subscriptions.',
+    titleKey: 'features.free.title',
+    descriptionKey: 'features.free.description',
     icon: 'mdi-heart',
   },
 ])
