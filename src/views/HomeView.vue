@@ -161,6 +161,14 @@ const tools = ref([
     url: 'https://siyu.memejpg.com/',
     available: true,
   },
+  {
+    id: 9,
+    nameKey: 'tools.businessCardGenerator.name',
+    descriptionKey: 'tools.businessCardGenerator.description',
+    icon: 'mdi-card-account-details',
+    url: 'https://card.memejpg.com',
+    available: true,
+  },
 ])
 
 const features = ref([

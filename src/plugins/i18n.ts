@@ -54,6 +54,11 @@ const en = {
       description:
         'Smart text obfuscation to generate detection-resistant images for private domain traffic conversion. Create compelling visuals that bypass content filters.',
     },
+    businessCardGenerator: {
+      name: 'Business Card Generator',
+      description:
+        'Create professional business cards with customizable templates and designs. Generate high-quality business cards for networking and professional purposes.',
+    },
     tryNow: 'Try Now',
     comingSoon: 'Coming Soon',
   },
@@ -270,6 +275,11 @@ const zh = {
       description:
         '智能文本混淆技术，生成抗检测的私域流量转化图片。创建能够绕过内容过滤器的引人注目的视觉内容。',
     },
+    businessCardGenerator: {
+      name: '名片生成器',
+      description:
+        '使用可定制的模板和设计创建专业名片。为网络和商业目的生成高质量名片。',
+    },
     tryNow: '立即试用',
     comingSoon: '即将推出',
   },
@@ -469,6 +479,11 @@ const ja = {
       name: 'プライベートドメイントラフィック画像ジェネレーター',
       description:
         'スマートテキスト難読化技術により、プライベートドメイントラフィック変換用の検出耐性画像を生成。コンテンツフィルターを回避する魅力的なビジュアルを作成。',
+    },
+    businessCardGenerator: {
+      name: '名刺ジェネレーター',
+      description:
+        'カスタマイズ可能なテンプレートとデザインでプロフェッショナルな名刺を作成。ネットワーキングやビジネス目的のための高品質な名刺を生成。',
     },
     tryNow: '今すぐ試す',
     comingSoon: '近日公開',
