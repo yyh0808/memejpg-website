@@ -12,7 +12,19 @@ const en = {
     subtitle: 'Handle all your image editing needs',
     exploreTools: 'Explore Tools',
   },
-  tools: {
+'tools': {
+    sorryCard: {
+      name: 'Apology Card',
+      description: 'Create heartfelt apology cards for any occasion.',
+    },
+    greetingCard: {
+      name: 'Greeting Card Generator',
+      description: 'Generate personalized greeting cards with custom messages.',
+    },
+    birthdayCard: {
+      name: 'Birthday Card Creator',
+      description: 'Design fun birthday cards to celebrate their special day.',
+    },
     title: 'Our Image Editing Tools',
     backgroundRemover: {
       name: 'Background Remover',
@@ -240,7 +252,19 @@ const zh = {
     subtitle: '满足您所有的图片编辑需求',
     exploreTools: '探索工具',
   },
-  tools: {
+tools: {
+    sorryCard: {
+      name: '道歉卡',
+      description: '为任何场合创建真挚的道歉卡。',
+    },
+    greetingCard: {
+      name: '祝福卡片生成器',
+      description: '生成带有自定义消息的个性化祝福卡片。',
+    },
+    birthdayCard: {
+      name: '生日卡片创建器',
+      description: '设计有趣的生日卡片来庆祝他们的特殊日子。',
+    },
     title: '我们的图片编辑工具',
     backgroundRemover: {
       name: '背景移除器',
@@ -439,6 +463,18 @@ const ja = {
     exploreTools: 'ツールを探索',
   },
   tools: {
+    sorryCard: {
+      name: 'お詫びカード',
+      description: 'あらゆる場合に心こもったお詫びカードを作成します。',
+    },
+    greetingCard: {
+      name: 'グリーティングカード生成器',
+      description: 'カスタムメッセージ付きのパーソナライズしたグリーティングカードを生成します。',
+    },
+    birthdayCard: {
+      name: '誕生日カード作成器',
+      description: '特別な日を祝うための楽しい誕生日カードをデザインします。',
+    },
     title: '私たちの画像編集ツール',
     backgroundRemover: {
       name: '背景除去ツール',
@@ -663,6 +699,18 @@ const es = {
     exploreTools: 'Explorar Herramientas',
   },
   tools: {
+    sorryCard: {
+      name: 'Tarjeta de Disculpas',
+      description: 'Crea tarjetas de disculpas sinceras para cualquier ocasión.',
+    },
+    greetingCard: {
+      name: 'Generador de Tarjetas de Saludo',
+      description: 'Genera tarjetas de saludo personalizadas con mensajes personalizados.',
+    },
+    birthdayCard: {
+      name: 'Creador de Tarjetas de Cumpleaños',
+      description: 'Diseña tarjetas de cumpleaños divertidas para celebrar su día especial.',
+    },
     title: 'Nuestras Herramientas de Edición de Imágenes',
     backgroundRemover: {
       name: 'Removedor de Fondos',
@@ -742,6 +790,18 @@ const nl = {
     exploreTools: 'Verken Tools',
   },
   tools: {
+    sorryCard: {
+      name: 'Verontschuldigingskaart',
+      description: 'Maak oprechte verontschuldigingskaarten voor elke gelegenheid.',
+    },
+    greetingCard: {
+      name: 'Wenskaart Generator',
+      description: 'Genereer gepersonaliseerde wenskaarten met aangepaste berichten.',
+    },
+    birthdayCard: {
+      name: 'Verjaardagskaart Maker',
+      description: 'Ontwerp leuke verjaardagskaarten om hun speciale dag te vieren.',
+    },
     title: 'Onze Beeldbewerkingstools',
     backgroundRemover: {
       name: 'Achtergrond Verwijderaar',
@@ -821,6 +881,18 @@ const ko = {
     exploreTools: '도구 탐색',
   },
   tools: {
+    sorryCard: {
+      name: '사과 카드',
+      description: '모든 경우에 진심 어린 사과 카드를 만드세요.',
+    },
+    greetingCard: {
+      name: '인사말 카드 생성기',
+      description: '맞춤 메시지로 개인화된 인사말 카드를 생성합니다.',
+    },
+    birthdayCard: {
+      name: '생일 카드 생성기',
+      description: '특별한 날을 축하하기 위한 재미있는 생일 카드를 디자인합니다.',
+    },
     title: '우리의 이미지 편집 도구',
     backgroundRemover: {
       name: '배경 제거기',
@@ -898,6 +970,18 @@ const fr = {
     exploreTools: 'Explorer les Outils',
   },
   tools: {
+    sorryCard: {
+      name: "Carte d'Excuses",
+      description: "Créez des cartes d'excuses sincères pour toute occasion.",
+    },
+    greetingCard: {
+      name: 'Générateur de Cartes de Vœux',
+      description: 'Générez des cartes de vœux personnalisées avec des messages personnalisés.',
+    },
+    birthdayCard: {
+      name: "Créateur de Cartes d'Anniversaire",
+      description: "Concevez des cartes d'anniversaire amusantes pour célébrer leur jour spécial.",
+    },
     title: "Nos Outils d'Édition d'Images",
     backgroundRemover: {
       name: "Suppresseur d'Arrière-plan",
@@ -977,6 +1061,18 @@ const de = {
     exploreTools: 'Tools Erkunden',
   },
   tools: {
+    sorryCard: {
+      name: 'Entschuldigungskarte',
+      description: 'Erstellen Sie herzliche Entschuldigungskarten für jeden Anlass.',
+    },
+    greetingCard: {
+      name: 'Grußkarten-Generator',
+      description: 'Generieren Sie personalisierte Grußkarten mit benutzerdefinierten Nachrichten.',
+    },
+    birthdayCard: {
+      name: 'Geburtstagskarten-Ersteller',
+      description: 'Entwerfen Sie lustige Geburtstagskarten, um ihren besonderen Tag zu feiern.',
+    },
     title: 'Unsere Bildbearbeitungstools',
     backgroundRemover: {
       name: 'Hintergrund-Entferner',
