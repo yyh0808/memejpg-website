@@ -23,7 +23,9 @@
           <v-btn
             v-for="link in navigation"
             :key="link.name"
-            :to="link.path"
+            :to="link.external ? undefined : link.path"
+            :href="link.external ? link.path : undefined"
+            :target="link.external ? '_blank' : undefined"
             variant="text"
             color="white"
             class="mx-2"
@@ -71,6 +73,7 @@ import LanguageSwitcher from './components/LanguageSwitcher.vue'
 const navigation = [
   { name: 'nav.home', path: '/' },
   { name: 'nav.about', path: '/about' },
+  { name: 'nav.blog', path: 'https://blog.memejpg.com', external: true },
 ]
 
 const socialIcons = [

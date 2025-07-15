@@ -64,31 +64,6 @@
 
             <v-card-text class="px-0 pb-0">
               <p class="text-body-1 mb-4">{{ $t(tool.descriptionKey) }}</p>
-
-              <h4 class="text-subtitle-1 font-weight-bold mb-3">
-                {{ $t('about.tools.features') }}
-              </h4>
-              <div class="features-list w-100">
-                <div
-                  v-for="(feature, index) in $t(tool.featuresKey)"
-                  :key="index"
-                  class="feature-item d-flex align-start mb-2 w-100"
-                >
-                  <v-icon size="16" color="primary" class="mt-1 mr-2 flex-shrink-0"
-                    >mdi-check-circle</v-icon
-                  >
-                  <span
-                    class="text-body-2 flex-grow-1 feature-text"
-                    style="
-                      word-wrap: normal !important;
-                      overflow-wrap: normal !important;
-                      white-space: normal !important;
-                      word-break: normal !important;
-                    "
-                    >{{ feature }}</span
-                  >
-                </div>
-              </div>
             </v-card-text>
           </v-card-item>
 
@@ -235,6 +210,86 @@ const toolsDetail = ref([
     status: 'Available',
     url: 'https://siyu.memejpg.com/',
   },
+  {
+    nameKey: 'about.toolsDetail.businessCardGenerator.name',
+    descriptionKey: 'about.toolsDetail.businessCardGenerator.description',
+    featuresKey: 'about.toolsDetail.businessCardGenerator.features',
+    icon: 'mdi-card-account-details',
+    status: 'Available',
+    url: 'https://card.memejpg.com/',
+  },
+  {
+    nameKey: 'about.toolsDetail.sorryCard.name',
+    descriptionKey: 'about.toolsDetail.sorryCard.description',
+    featuresKey: 'about.toolsDetail.sorryCard.features',
+    icon: 'mdi-emoticon-sad',
+    status: 'Available',
+    url: 'https://sorry.memejpg.com/',
+  },
+  {
+    nameKey: 'about.toolsDetail.greetingCard.name',
+    descriptionKey: 'about.toolsDetail.greetingCard.description',
+    featuresKey: 'about.toolsDetail.greetingCard.features',
+    icon: 'mdi-cards-heart',
+    status: 'Available',
+    url: 'https://greeting.memejpg.com/',
+  },
+  {
+    nameKey: 'about.toolsDetail.birthdayCard.name',
+    descriptionKey: 'about.toolsDetail.birthdayCard.description',
+    featuresKey: 'about.toolsDetail.birthdayCard.features',
+    icon: 'mdi-cake-variant',
+    status: 'Available',
+    url: 'https://birthday.memejpg.com/',
+  },
+  {
+    nameKey: 'about.toolsDetail.qrCodeGenerator.name',
+    descriptionKey: 'about.toolsDetail.qrCodeGenerator.description',
+    featuresKey: 'about.toolsDetail.qrCodeGenerator.features',
+    icon: 'mdi-qrcode',
+    status: 'Available',
+    url: 'https://qr.memejpg.com/',
+  },
+  {
+    nameKey: 'about.toolsDetail.bookmarkGenerator.name',
+    descriptionKey: 'about.toolsDetail.bookmarkGenerator.description',
+    featuresKey: 'about.toolsDetail.bookmarkGenerator.features',
+    icon: 'mdi-bookmark',
+    status: 'Available',
+    url: 'https://bookmark.memejpg.com/',
+  },
+  {
+    nameKey: 'about.toolsDetail.invitationGenerator.name',
+    descriptionKey: 'about.toolsDetail.invitationGenerator.description',
+    featuresKey: 'about.toolsDetail.invitationGenerator.features',
+    icon: 'mdi-email-outline',
+    status: 'Available',
+    url: 'https://invitation.memejpg.com/',
+  },
+  {
+    nameKey: 'about.toolsDetail.giftCardGenerator.name',
+    descriptionKey: 'about.toolsDetail.giftCardGenerator.description',
+    featuresKey: 'about.toolsDetail.giftCardGenerator.features',
+    icon: 'mdi-gift',
+    status: 'Available',
+    url: 'https://gift.memejpg.com/',
+  },
+  {
+    nameKey: 'about.toolsDetail.serviceCardGenerator.name',
+    descriptionKey: 'about.toolsDetail.serviceCardGenerator.description',
+    featuresKey: 'about.toolsDetail.serviceCardGenerator.features',
+    icon: 'mdi-cog',
+    status: 'Available',
+    url: 'https://sales.memejpg.com/',
+  },
+  {
+    nameKey: 'about.toolsDetail.membershipCardGenerator.name',
+    descriptionKey: 'about.toolsDetail.membershipCardGenerator.description',
+    featuresKey: 'about.toolsDetail.membershipCardGenerator.features',
+    icon: 'mdi-card-account-details-outline',
+    status: 'Available',
+    url: 'https://membership.memejpg.com/',
+  },
 ])
 
 const values = ref([
@@ -274,37 +329,6 @@ onMounted(() => {
 <style scoped>
 .max-w-3xl {
   max-width: 48rem;
-}
-
-.features-list {
-  max-width: 100%;
-  width: 100%;
-}
-
-.feature-item {
-  line-height: 1.6;
-  width: 100%;
-}
-
-.feature-item span {
-  flex: 1;
-  min-width: 0;
-  word-wrap: normal !important;
-  overflow-wrap: normal !important;
-  hyphens: none !important;
-  white-space: normal !important;
-  word-break: normal !important;
-  line-break: auto !important;
-}
-
-.feature-text {
-  word-wrap: normal !important;
-  overflow-wrap: normal !important;
-  hyphens: none !important;
-  white-space: normal !important;
-  word-break: normal !important;
-  line-break: auto !important;
-  text-wrap: wrap !important;
 }
 
 .gap-4 {

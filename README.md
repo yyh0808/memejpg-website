@@ -125,9 +125,83 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📞 Contact
 
 - Website: [MemeJPG](https://memejpg.com)
-- Email: contact@memejpg.com
+- Email: <contact@memejpg.com>
 - GitHub: [Your GitHub](https://github.com)
 
 ---
 
 Built with ❤️ using Vue 3 and TypeScript
+
+————————————————————————————————————————————
+2025-7-15更新
+————————————————————————————————————————————
+
+## 完整工具站信息
+
+ico生成工具
+<https://ico.memejpg.com>
+
+美颜工具站
+<https://beauty.memejpg.com>
+
+背景移除工具站
+<https://removebg.memejpg.com>
+
+二维码生成网站
+<https://qr.memejpg.com>
+
+字体压缩包工具
+<https://fontcompressor.memejpg.com>
+
+重命名工具
+<https://rename.memejpg.com>
+
+图片压缩工具
+<https://compress.memejpg.com>
+
+图片修改尺寸工具
+<https://resize.memejpg.com>
+
+memejpg博客
+<https://blog.memejpg.com>
+
+私域转化工具
+<https://siyu.memejpg.com>
+
+名片生成网站
+<https://card.memejpg.com>
+
+道歉卡生成
+<https://sorry.memejpg.com>
+
+祝福卡片生成
+<https://greeting.memejpg.com>
+
+生日卡片生成
+<https://birthday.memejpg.com>
+
+书签生成网站
+<https://bookmark.memejpg.com>
+
+邀请函生成
+<https://invitation.memejpg.com>
+
+礼品卡生成
+<https://gift.memejpg.com>
+
+售后服务卡生成
+<https://sales.memejpg.com>
+
+会员卡生成
+<https://membership.memejpg.com>
+
+## 所有新工具和博客链接添加了完整的多语言支持，包括
+
+• 英文 (en)
+• 中文 (zh)
+• 日文 (ja)
+• 西班牙文 (es)
+• 荷兰文 (nl)
+• 韩文 (ko)
+• 法文 (fr)
+• 德文 (de)

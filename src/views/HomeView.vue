@@ -59,7 +59,7 @@
               variant="outlined"
               :disabled="!tool.available"
             >
-              {{ tool.available ? 'Try Now' : 'Coming Soon' }}
+              {{ tool.available ? $t('tools.tryNow') : $t('tools.comingSoon') }}
             </v-btn>
           </v-card-actions>
         </v-card>
@@ -191,6 +191,54 @@ const tools = ref([
     descriptionKey: 'tools.birthdayCard.description',
     icon: 'mdi-cake-variant',
     url: 'https://birthday.memejpg.com',
+    available: true,
+  },
+  {
+    id: 13,
+    nameKey: 'tools.qrCodeGenerator.name',
+    descriptionKey: 'tools.qrCodeGenerator.description',
+    icon: 'mdi-qrcode',
+    url: 'https://qr.memejpg.com',
+    available: true,
+  },
+  {
+    id: 14,
+    nameKey: 'tools.bookmarkGenerator.name',
+    descriptionKey: 'tools.bookmarkGenerator.description',
+    icon: 'mdi-bookmark',
+    url: 'https://bookmark.memejpg.com',
+    available: true,
+  },
+  {
+    id: 15,
+    nameKey: 'tools.invitationGenerator.name',
+    descriptionKey: 'tools.invitationGenerator.description',
+    icon: 'mdi-email-outline',
+    url: 'https://invitation.memejpg.com',
+    available: true,
+  },
+  {
+    id: 16,
+    nameKey: 'tools.giftCardGenerator.name',
+    descriptionKey: 'tools.giftCardGenerator.description',
+    icon: 'mdi-gift',
+    url: 'https://gift.memejpg.com',
+    available: true,
+  },
+  {
+    id: 17,
+    nameKey: 'tools.serviceCardGenerator.name',
+    descriptionKey: 'tools.serviceCardGenerator.description',
+    icon: 'mdi-cog',
+    url: 'https://sales.memejpg.com',
+    available: true,
+  },
+  {
+    id: 18,
+    nameKey: 'tools.membershipCardGenerator.name',
+    descriptionKey: 'tools.membershipCardGenerator.description',
+    icon: 'mdi-card-account-details-outline',
+    url: 'https://membership.memejpg.com',
     available: true,
   },
 ])

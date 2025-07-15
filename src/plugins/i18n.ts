@@ -5,6 +5,7 @@ const en = {
   nav: {
     home: 'Home',
     about: 'About',
+    blog: 'Blog',
     slogan: 'Image Tools Made Simple',
   },
   hero: {
@@ -70,6 +71,36 @@ const en = {
       name: 'Business Card Generator',
       description:
         'Create professional business cards with customizable templates and designs. Generate high-quality business cards for networking and professional purposes.',
+    },
+    qrCodeGenerator: {
+      name: 'QR Code Generator',
+      description:
+        'Generate QR codes for various purposes including URLs, text, contact information, and more. Create customizable QR codes for business and personal use.',
+    },
+    bookmarkGenerator: {
+      name: 'Bookmark Generator',
+      description:
+        'Create beautiful bookmarks for reading and organization. Design personalized bookmarks with custom text, images, and layouts.',
+    },
+    invitationGenerator: {
+      name: 'Invitation Generator',
+      description:
+        'Generate elegant invitations for events, parties, and special occasions. Create professional invitations with customizable templates.',
+    },
+    giftCardGenerator: {
+      name: 'Gift Card Generator',
+      description:
+        'Create attractive gift cards for businesses and personal use. Design custom gift cards with various themes and denominations.',
+    },
+    serviceCardGenerator: {
+      name: 'Service Card Generator',
+      description:
+        'Generate professional service cards for after-sales support and customer service. Create informative service cards with contact details.',
+    },
+    membershipCardGenerator: {
+      name: 'Membership Card Generator',
+      description:
+        'Create membership cards for clubs, organizations, and businesses. Design professional membership cards with member information.',
     },
     tryNow: 'Try Now',
     comingSoon: 'Coming Soon',
@@ -236,6 +267,136 @@ const en = {
           'Anti-detection pattern generation',
         ],
       },
+      businessCardGenerator: {
+        name: 'Business Card Generator',
+        description:
+          'Create professional business cards with customizable templates and designs. Perfect for networking, business meetings, and professional branding.',
+        features: [
+          'Professional business card templates',
+          'Customizable contact information fields',
+          'Multiple design themes and colors',
+          'High-quality print-ready output',
+          'QR code integration for digital cards',
+          'Instant preview and download',
+        ],
+      },
+      sorryCard: {
+        name: 'Apology Card Generator',
+        description:
+          'Create heartfelt apology cards for personal and professional situations. Express genuine remorse with beautifully designed cards.',
+        features: [
+          'Heartfelt apology card templates',
+          'Customizable apology messages',
+          'Personal and professional themes',
+          'Emotional design elements',
+          'Multiple card formats available',
+          'Easy personalization options',
+        ],
+      },
+      greetingCard: {
+        name: 'Greeting Card Generator',
+        description:
+          'Generate personalized greeting cards for holidays, celebrations, and special occasions. Create memorable cards with custom messages and designs.',
+        features: [
+          'Holiday and seasonal card templates',
+          'Customizable greeting messages',
+          'Festive design elements',
+          'Multiple occasion categories',
+          'Photo integration capabilities',
+          'Print and digital sharing options',
+        ],
+      },
+      birthdayCard: {
+        name: 'Birthday Card Generator',
+        description:
+          'Design fun and personalized birthday cards for friends, family, and colleagues. Create unique birthday wishes with custom designs.',
+        features: [
+          'Age-appropriate birthday themes',
+          'Customizable birthday messages',
+          'Fun and colorful design elements',
+          'Photo upload and integration',
+          'Multiple card size options',
+          'Instant download and sharing',
+        ],
+      },
+      qrCodeGenerator: {
+        name: 'QR Code Generator',
+        description:
+          'Generate QR codes for various purposes including URLs, text, contact information, WiFi credentials, and more. Create scannable codes for modern digital interactions.',
+        features: [
+          'Multiple QR code data types',
+          'URL, text, and contact QR codes',
+          'WiFi and social media QR codes',
+          'Customizable design and colors',
+          'High-resolution output formats',
+          'Batch QR code generation',
+        ],
+      },
+      bookmarkGenerator: {
+        name: 'Bookmark Generator',
+        description:
+          'Create beautiful bookmarks for reading enthusiasts and students. Design personalized bookmarks with quotes, images, and custom layouts.',
+        features: [
+          'Educational and literary themes',
+          'Customizable bookmark designs',
+          'Quote and image integration',
+          'Multiple bookmark sizes',
+          'Print-ready PDF output',
+          'Lamination-friendly formats',
+        ],
+      },
+      invitationGenerator: {
+        name: 'Invitation Generator',
+        description:
+          'Generate elegant invitations for events, parties, weddings, and special occasions. Create professional invitations with customizable templates.',
+        features: [
+          'Event-specific invitation templates',
+          'Wedding and party designs',
+          'RSVP information integration',
+          'Date and time customization',
+          'Multiple invitation formats',
+          'Digital and print-ready options',
+        ],
+      },
+      giftCardGenerator: {
+        name: 'Gift Card Generator',
+        description:
+          'Create attractive gift cards for businesses, special occasions, and personal gifts. Design custom gift cards with various themes and denominations.',
+        features: [
+          'Business and personal gift cards',
+          'Multiple denomination options',
+          'Seasonal and themed designs',
+          'Security features and codes',
+          'Barcode and QR code integration',
+          'Professional branding options',
+        ],
+      },
+      serviceCardGenerator: {
+        name: 'Service Card Generator',
+        description:
+          'Generate professional service cards for after-sales support, customer service, and business communication. Create informative cards with contact details.',
+        features: [
+          'Professional service card templates',
+          'Contact information fields',
+          'Service description areas',
+          'Company branding integration',
+          'Multiple card formats',
+          'Customer support themes',
+        ],
+      },
+      membershipCardGenerator: {
+        name: 'Membership Card Generator',
+        description:
+          'Create membership cards for clubs, organizations, gyms, and businesses. Design professional cards with member information and benefits.',
+        features: [
+          'Club and organization templates',
+          'Member information fields',
+          'Membership benefits listing',
+          'Barcode and ID integration',
+          'Expiration date features',
+          'Professional card designs',
+        ],
+      },
     },
   },
 }
@@ -245,6 +406,7 @@ const zh = {
   nav: {
     home: '首页',
     about: '关于',
+    blog: '博客',
     slogan: '简化图片处理',
   },
   hero: {
@@ -303,6 +465,36 @@ tools: {
       name: '名片生成器',
       description:
         '使用可定制的模板和设计创建专业名片。为网络和商业目的生成高质量名片。',
+    },
+    qrCodeGenerator: {
+      name: '二维码生成器',
+      description:
+        '为各种用途生成二维码，包括网址、文本、联系信息等。为商业和个人用途创建可定制的二维码。',
+    },
+    bookmarkGenerator: {
+      name: '书签生成器',
+      description:
+        '为阅读和组织创建美丽的书签。设计带有自定义文本、图像和布局的个性化书签。',
+    },
+    invitationGenerator: {
+      name: '邀请函生成器',
+      description:
+        '为活动、派对和特殊场合生成优雅的邀请函。使用可定制的模板创建专业邀请函。',
+    },
+    giftCardGenerator: {
+      name: '礼品卡生成器',
+      description:
+        '为企业和个人使用创建吸引人的礼品卡。设计具有各种主题和面额的定制礼品卡。',
+    },
+    serviceCardGenerator: {
+      name: '售后服务卡生成器',
+      description:
+        '为售后支持和客户服务生成专业的服务卡。创建包含联系详情的信息性服务卡。',
+    },
+    membershipCardGenerator: {
+      name: '会员卡生成器',
+      description:
+        '为俱乐部、组织和企业创建会员卡。设计包含会员信息的专业会员卡。',
     },
     tryNow: '立即试用',
     comingSoon: '即将推出',
@@ -446,6 +638,136 @@ tools: {
           '反检测模式生成',
         ],
       },
+      businessCardGenerator: {
+        name: '名片生成器',
+        description:
+          '创建专业名片，具有可自定义的模板和设计。非常适合网络交流、商务会议和专业品牌建设。',
+        features: [
+          '专业名片模板',
+          '可自定义联系信息字段',
+          '多种设计主题和颜色',
+          '高质量可打印输出',
+          '数字名片的二维码集成',
+          '即时预览和下载',
+        ],
+      },
+      sorryCard: {
+        name: '道歉卡生成器',
+        description:
+          '为个人和专业场合创建真诚的道歉卡。用精美设计的卡片表达真诚的歉意。',
+        features: [
+          '真诚道歉卡模板',
+          '可自定义道歉信息',
+          '个人和专业主题',
+          '情感化设计元素',
+          '多种卡片格式可选',
+          '简易个性化选项',
+        ],
+      },
+      greetingCard: {
+        name: '祝福卡片生成器',
+        description:
+          '为节日、庆祝活动和特殊场合生成个性化祝福卡片。创建具有自定义信息和设计的难忘卡片。',
+        features: [
+          '节日和季节卡片模板',
+          '可自定义祝福信息',
+          '节日设计元素',
+          '多种场合类别',
+          '照片集成功能',
+          '打印和数字分享选项',
+        ],
+      },
+      birthdayCard: {
+        name: '生日卡片生成器',
+        description:
+          '为朋友、家人和同事设计有趣的个性化生日卡片。创建具有自定义设计的独特生日祝福。',
+        features: [
+          '适合年龄的生日主题',
+          '可自定义生日信息',
+          '有趣多彩的设计元素',
+          '照片上传和集成',
+          '多种卡片尺寸选项',
+          '即时下载和分享',
+        ],
+      },
+      qrCodeGenerator: {
+        name: '二维码生成器',
+        description:
+          '为各种用途生成二维码，包括网址、文本、联系信息、WiFi凭据等。为现代数字交互创建可扫描代码。',
+        features: [
+          '多种二维码数据类型',
+          '网址、文本和联系人二维码',
+          'WiFi和社交媒体二维码',
+          '可自定义设计和颜色',
+          '高分辨率输出格式',
+          '批量二维码生成',
+        ],
+      },
+      bookmarkGenerator: {
+        name: '书签生成器',
+        description:
+          '为阅读爱好者和学生创建美丽的书签。设计带有名言、图片和自定义布局的个性化书签。',
+        features: [
+          '教育和文学主题',
+          '可自定义书签设计',
+          '名言和图片集成',
+          '多种书签尺寸',
+          '可打印PDF输出',
+          '适合覆膜的格式',
+        ],
+      },
+      invitationGenerator: {
+        name: '邀请函生成器',
+        description:
+          '为活动、聚会、婚礼和特殊场合生成优雅的邀请函。使用可自定义的模板创建专业邀请函。',
+        features: [
+          '特定活动邀请模板',
+          '婚礼和聚会设计',
+          'RSVP信息集成',
+          '日期和时间自定义',
+          '多种邀请格式',
+          '数字和可打印选项',
+        ],
+      },
+      giftCardGenerator: {
+        name: '礼品卡生成器',
+        description:
+          '为企业、特殊场合和个人礼品创建吸引人的礼品卡。设计具有各种主题和面额的定制礼品卡。',
+        features: [
+          '商业和个人礼品卡',
+          '多种面额选项',
+          '季节性和主题设计',
+          '安全功能和代码',
+          '条码和二维码集成',
+          '专业品牌选项',
+        ],
+      },
+      serviceCardGenerator: {
+        name: '售后服务卡生成器',
+        description:
+          '为售后支持、客户服务和业务沟通生成专业服务卡。创建包含联系详情的信息性卡片。',
+        features: [
+          '专业服务卡模板',
+          '联系信息字段',
+          '服务描述区域',
+          '公司品牌集成',
+          '多种卡片格式',
+          '客户支持主题',
+        ],
+      },
+      membershipCardGenerator: {
+        name: '会员卡生成器',
+        description:
+          '为俱乐部、组织、健身房和企业创建会员卡。设计包含会员信息和权益的专业卡片。',
+        features: [
+          '俱乐部和组织模板',
+          '会员信息字段',
+          '会员权益列表',
+          '条码和ID集成',
+          '到期日期功能',
+          '专业卡片设计',
+        ],
+      },
     },
   },
 }
@@ -455,6 +777,7 @@ const ja = {
   nav: {
     home: 'ホーム',
     about: 'について',
+    blog: 'ブログ',
     slogan: 'シンプルな画像ツール',
   },
   hero: {
@@ -520,6 +843,36 @@ const ja = {
       name: '名刺ジェネレーター',
       description:
         'カスタマイズ可能なテンプレートとデザインでプロフェッショナルな名刺を作成。ネットワーキングやビジネス目的のための高品質な名刺を生成。',
+    },
+    qrCodeGenerator: {
+      name: 'QRコード生成器',
+      description:
+        'URL、テキスト、連絡先情報など、様々な用途のQRコードを生成。ビジネスや個人用途でカスタマイズ可能なQRコードを作成。',
+    },
+    bookmarkGenerator: {
+      name: 'ブックマーク生成器',
+      description:
+        '読書や整理のための美しいブックマークを作成。カスタムテキスト、画像、レイアウトでパーソナライズされたブックマークをデザイン。',
+    },
+    invitationGenerator: {
+      name: '招待状生成器',
+      description:
+        'イベント、パーティー、特別な機会のためのエレガントな招待状を生成。カスタマイズ可能なテンプレートでプロフェッショナルな招待状を作成。',
+    },
+    giftCardGenerator: {
+      name: 'ギフトカード生成器',
+      description:
+        'ビジネスや個人用途のための魅力的なギフトカードを作成。様々なテーマと額面のカスタムギフトカードをデザイン。',
+    },
+    serviceCardGenerator: {
+      name: 'サービスカード生成器',
+      description:
+        'アフターサービスとカスタマーサービスのためのプロフェッショナルなサービスカードを生成。連絡先詳細付きの情報的サービスカードを作成。',
+    },
+    membershipCardGenerator: {
+      name: 'メンバーシップカード生成器',
+      description:
+        'クラブ、組織、ビジネスのためのメンバーシップカードを作成。メンバー情報付きのプロフェッショナルなメンバーシップカードをデザイン。',
     },
     tryNow: '今すぐ試す',
     comingSoon: '近日公開',
@@ -691,6 +1044,7 @@ const es = {
   nav: {
     home: 'Inicio',
     about: 'Acerca de',
+    blog: 'Blog',
     slogan: 'Herramientas de Imagen Simples',
   },
   hero: {
@@ -782,6 +1136,7 @@ const nl = {
   nav: {
     home: 'Home',
     about: 'Over',
+    blog: 'Blog',
     slogan: 'Eenvoudige Afbeeldingstools',
   },
   hero: {
@@ -873,6 +1228,7 @@ const ko = {
   nav: {
     home: '홈',
     about: '소개',
+    blog: '블로그',
     slogan: '간단한 이미지 도구',
   },
   hero: {
@@ -962,6 +1318,7 @@ const fr = {
   nav: {
     home: 'Accueil',
     about: 'À propos',
+    blog: 'Blog',
     slogan: "Outils d'Image Simples",
   },
   hero: {
@@ -1053,6 +1410,7 @@ const de = {
   nav: {
     home: 'Startseite',
     about: 'Über uns',
+    blog: 'Blog',
     slogan: 'Einfache Bildtools',
   },
   hero: {
