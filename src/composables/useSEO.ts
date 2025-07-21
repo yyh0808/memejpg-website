@@ -1,5 +1,6 @@
 import { useI18n } from 'vue-i18n'
 import { watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 interface SEOData {
   title: string
@@ -15,6 +16,7 @@ interface SEOData {
 
 export function useSEO() {
   const { locale } = useI18n()
+  const route = useRoute()
 
   const seoData = {
     en: {
@@ -43,12 +45,42 @@ export function useSEO() {
     },
   }
 
+  const updateCanonical = () => {
+    // Remove existing canonical link
+    const existingCanonical = document.querySelector('link[rel="canonical"]')
+    if (existingCanonical) {
+      existingCanonical.remove()
+    }
+
+    // Create new canonical link
+    const canonical = document.createElement('link')
+    canonical.setAttribute('rel', 'canonical')
+    
+    // Get clean URL without unwanted parameters
+    const url = new URL(window.location.href)
+    const baseUrl = 'https://memejpg.com'
+    const cleanPath = route.path === '/' ? '' : route.path
+    
+    // Keep only lang parameter, remove others like ref, q, etc.
+    let canonicalUrl = `${baseUrl}${cleanPath}`
+    if (url.searchParams.has('lang')) {
+      const lang = url.searchParams.get('lang')
+      canonicalUrl += `?lang=${lang}`
+    }
+    
+    canonical.setAttribute('href', canonicalUrl)
+    document.head.appendChild(canonical)
+  }
+
   const updateSEO = (customData?: Partial<SEOData>) => {
     const currentLocale = locale.value as keyof typeof seoData
     const data = { ...seoData[currentLocale], ...customData }
 
     // 更新页面标题
     document.title = data.title
+
+    // 更新canonical链接
+    updateCanonical()
 
     // 更新或创建meta标签
     updateMetaTag('description', data.description)
@@ -57,7 +89,10 @@ export function useSEO() {
 
     // Open Graph标签
     updateMetaProperty('og:type', 'website')
-    updateMetaProperty('og:url', window.location.href)
+    // Use canonical URL for og:url instead of window.location.href
+    const canonicalLink = document.querySelector('link[rel="canonical"]')
+    const canonicalUrl = canonicalLink?.getAttribute('href') || window.location.href
+    updateMetaProperty('og:url', canonicalUrl)
     updateMetaProperty('og:title', data.ogTitle || data.title)
     updateMetaProperty('og:description', data.ogDescription || data.description)
     updateMetaProperty('og:image', data.ogImage || '/favicon.ico')
@@ -66,7 +101,7 @@ export function useSEO() {
 
     // Twitter标签
     updateMetaProperty('twitter:card', 'summary_large_image')
-    updateMetaProperty('twitter:url', window.location.href)
+    updateMetaProperty('twitter:url', canonicalUrl)
     updateMetaProperty('twitter:title', data.twitterTitle || data.title)
     updateMetaProperty('twitter:description', data.twitterDescription || data.description)
     updateMetaProperty('twitter:image', data.twitterImage || data.ogImage || '/favicon.ico')
@@ -158,10 +193,19 @@ export function useSEO() {
     document.head.appendChild(script)
   }
 
-  // 监听语言变化
-  watch(locale, () => {
-    updateSEO()
-  })
+  // 监听路由和语言变化
+  watch([() => route.fullPath, locale], () => {
+    // 为404页面设置特殊的SEO处理
+    if (route.name === 'NotFound') {
+      updateSEO({
+        title: '404 - Page Not Found | MemeJPG',
+        description: 'The page you are looking for could not be found. Please check the URL or return to our homepage for free image editing tools.',
+        keywords: '404, page not found, error, memejpg'
+      })
+    } else {
+      updateSEO()
+    }
+  }, { immediate: true })
 
   return {
     updateSEO,

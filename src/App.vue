@@ -69,6 +69,10 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import LanguageSwitcher from './components/LanguageSwitcher.vue'
+import { useSEO } from './composables/useSEO'
+
+// Initialize SEO management
+useSEO()
 
 const navigation = [
   { name: 'nav.home', path: '/' },

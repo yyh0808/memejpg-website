@@ -7,6 +7,33 @@ Sitemap: https://memejpg.com/sitemap.xml
 # Crawl-delay for polite crawling
 Crawl-delay: 1
 
+# Prevent duplicate content issues
+# Disallow query parameters that cause duplicate content
+Disallow: /*?ref=*
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+Disallow: /*?source=*
+
+# Block Cloudflare paths and technical URLs
+Disallow: /cdn-cgi/
+Disallow: /.well-known/
+Disallow: /*_redirects
+Disallow: /*netlify.toml
+
+# Block common technical files
+Disallow: /.*
+Disallow: /*.json$
+Disallow: /*.xml$ 
+Disallow: /sitemap.xml
+
+# Re-allow important files
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+# Allow language parameters
+Allow: /*?lang=*
+
 # Allow all major search engines
 User-agent: Googlebot
 Allow: /
