@@ -1,4 +1,5 @@
 import './assets/main.css'
+import './assets/modern.css' // Import modern design system
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

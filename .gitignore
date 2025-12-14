@@ -159,3 +159,6 @@ build/
 *.sln
 *.sw?
 EOF < /dev/null
+
+# CF files
+DEPLOY_CF.md

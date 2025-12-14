@@ -18,6 +18,31 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
     {
+      path: '/download',
+      name: 'download',
+      component: () => import('../views/DownloadView.vue'),
+    },
+    {
+      path: '/tools',
+      name: 'tools',
+      component: () => import('../views/ToolsView.vue'),
+    },
+    {
+      path: '/history',
+      name: 'history',
+      component: () => import('../views/HistoryView.vue'),
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: () => import('../views/PrivacyView.vue'),
+    },
+    {
+      path: '/terms',
+      name: 'terms',
+      component: () => import('../views/TermsView.vue'),
+    },
+    {
       // Catch all route for 404 pages
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
