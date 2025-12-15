@@ -7,15 +7,15 @@
           <v-col cols="12" md="10" lg="8" class="text-center">
              <div class="d-inline-flex align-center glass-effect px-4 py-1 rounded-pill mb-6 border">
                 <v-icon icon="mdi-star" color="amber" size="small" class="mr-2"></v-icon>
-                <span class="text-caption font-weight-bold text-grey-darken-3">New: Mac App Available</span>
+                <span class="text-caption font-weight-bold text-high-emphasis">{{ $t('hero.newApp') }}</span>
              </div>
             
-            <h1 class="text-h3 text-md-h2 font-weight-black text-grey-darken-4 mb-4 font-modern lh-tight">
+            <h1 class="text-h3 text-md-h2 font-weight-black text-high-emphasis mb-4 font-modern lh-tight">
               Master Your Images with
               <div class="text-gradient">MemeJPG Tools</div>
             </h1>
 
-            <p class="text-h6 text-grey-darken-1 mb-8 font-weight-regular" style="max-width: 600px; margin: 0 auto;">
+            <p class="text-h6 text-medium-emphasis mb-8 font-weight-regular" style="max-width: 600px; margin: 0 auto;">
               {{ $t('hero.subtitle') || 'Online image tools for everyone. Resize, compress, remove backgrounds, and more—instantly in your browser.' }}
             </p>
 
@@ -59,24 +59,24 @@
       <v-row>
         <v-col cols="12" class="text-center mb-8">
            <h2 class="text-subtitle-1 font-weight-bold text-primary text-uppercase mb-2 font-modern tracking-wide">Our Tools</h2>
-           <h3 class="text-h4 font-weight-bold text-grey-darken-3 font-modern mb-4">{{ $t('tools.title') }}</h3>
-           <p class="text-body-1 text-grey-darken-1">Professional grade tools, completely free.</p>
+           <h3 class="text-h4 font-weight-bold text-high-emphasis font-modern mb-4">{{ $t('tools.title') }}</h3>
+           <p class="text-body-1 text-medium-emphasis">Professional grade tools, completely free.</p>
         </v-col>
 
         <v-col v-for="tool in tools" :key="tool.id" cols="12" sm="6" md="4" lg="3">
           <a :href="tool.url" target="_blank" class="text-decoration-none">
             <v-card class="glass-card h-100 pa-4" variant="flat">
                 <div class="d-flex align-center mb-4">
-                  <div class="rounded-lg pa-3 bg-indigo-lighten-5 text-primary mr-4">
+                  <div class="rounded-lg pa-3 bg-surface-variant text-primary mr-4">
                     <v-icon size="28">{{ tool.icon }}</v-icon>
                   </div>
                 </div>
                 
-                <h3 class="text-h6 font-weight-bold text-grey-darken-3 mb-2 font-modern">
+                <h3 class="text-h6 font-weight-bold text-high-emphasis mb-2 font-modern">
                     {{ $t(tool.nameKey) }}
                 </h3>
   
-                <p class="text-body-2 text-grey-darken-1 mb-4 line-clamp-2">
+                <p class="text-body-2 text-medium-emphasis mb-4 line-clamp-2">
                   {{ $t(tool.descriptionKey) }}
                 </p>
                 
@@ -91,17 +91,17 @@
     </v-container>
 
     <!-- Features Section -->
-    <div class="bg-grey-lighten-5 py-16 border-t border-b">
+    <div class="bg-surface-variant py-16 border-t border-b">
        <v-container>
         <v-row class="text-center">
             <v-col cols="12" md="4" v-for="(feature, i) in features" :key="i" class="px-4">
-               <div class="bg-white rounded-circle pa-6 d-inline-block mb-6 shadow-sm">
+               <div class="bg-surface rounded-circle pa-6 d-inline-block mb-6 shadow-sm">
                  <v-icon size="40" color="primary">{{ feature.icon }}</v-icon>
                </div>
-               <h3 class="text-h5 font-weight-bold mb-3 text-grey-darken-3 font-modern">
+               <h3 class="text-h5 font-weight-bold mb-3 text-high-emphasis font-modern">
                  {{ $t(feature.titleKey) }}
                </h3>
-                <p class="text-body-1 text-grey-darken-1 px-8">
+                <p class="text-body-1 text-medium-emphasis px-8">
                 {{ $t(feature.descriptionKey) }}
               </p>
             </v-col>

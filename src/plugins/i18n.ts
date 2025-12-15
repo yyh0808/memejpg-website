@@ -7,13 +7,36 @@ const en = {
     about: 'About',
     blog: 'Blog',
     slogan: 'Image Tools Made Simple',
+    theme: {
+      light: 'Light Mode',
+      dark: 'Dark Mode',
+      auto: 'Auto',
+    },
   },
   hero: {
     title: 'Welcome to MemeJPG',
     subtitle: 'Handle all your image editing needs',
     exploreTools: 'Explore Tools',
+    newApp: 'New: Mac App Available',
   },
-'tools': {
+  download: {
+    title: 'MemeJPG for Mac',
+    chip: {
+      silicon: 'Apple Silicon (M1/M2/M3)',
+      intel: 'Intel Chip',
+    },
+    button: {
+      dmg: 'Download .dmg',
+    },
+    designedFor: 'Designed for macOS',
+    requires: 'Requires macOS 11.0 or later.',
+    otherPlatforms: 'Looking for other platforms?',
+    comingSoon: 'Coming Soon',
+    history: 'History Versions',
+    loading: 'Loading version...',
+    latest: 'Latest',
+  },
+  'tools': {
     sorryCard: {
       name: 'Apology Card',
       description: 'Create heartfelt apology cards for any occasion.',
@@ -102,6 +125,14 @@ const en = {
       description:
         'Create membership cards for clubs, organizations, and businesses. Design professional membership cards with member information.',
     },
+    colorTone: {
+      name: 'Color Tone Maker',
+      description: 'Extract beautiful color palettes from images or generate new color combinations for your designs.',
+    },
+    redEnvelope: {
+      name: 'Red Envelope Cover Generator',
+      description: 'Design custom red envelope covers for special occasions. Create unique and festive digital red envelopes.',
+    },
     tryNow: 'Try Now',
     comingSoon: 'Coming Soon',
   },
@@ -122,6 +153,7 @@ const en = {
   },
   footer: {
     copyright: 'MemeJPG - Handle all your image editing needs.',
+    friendlyLinks: 'Friendly Links',
   },
   about: {
     title: 'About MemeJPG',
@@ -382,19 +414,30 @@ const en = {
           'Company branding integration',
           'Multiple card formats',
           'Customer support themes',
-        ],
-      },
-      membershipCardGenerator: {
-        name: 'Membership Card Generator',
-        description:
-          'Create membership cards for clubs, organizations, gyms, and businesses. Design professional cards with member information and benefits.',
-        features: [
-          'Club and organization templates',
-          'Member information fields',
-          'Membership benefits listing',
-          'Barcode and ID integration',
           'Expiration date features',
           'Professional card designs',
+        ],
+      },
+      colorTone: {
+        name: 'Color Tone Maker',
+        description: 'Extract beautiful color palettes from images or generate new color combinations for your designs.',
+        features: [
+          'Extract colors from images',
+          'Generate color palettes',
+          'Color code export (HEX, RGB)',
+          'Save and share palettes',
+          'Design inspiration',
+        ],
+      },
+      redEnvelope: {
+        name: 'Red Envelope Cover Generator',
+        description: 'Design custom red envelope covers for special occasions. Create unique and festive digital red envelopes.',
+        features: [
+          'Custom red envelope templates',
+          'Festive design elements',
+          'Photo integration',
+          'Text customization',
+          'Digital sharing formats',
         ],
       },
     },
@@ -408,13 +451,36 @@ const zh = {
     about: '关于',
     blog: '博客',
     slogan: '简化图片处理',
+    theme: {
+      light: '浅色模式',
+      dark: '深色模式',
+      auto: '自动',
+    },
   },
   hero: {
     title: '欢迎来到 MemeJPG',
     subtitle: '满足您所有的图片编辑需求',
     exploreTools: '探索工具',
+    newApp: '新功能：Mac 客户端可用',
   },
-tools: {
+  download: {
+    title: 'MemeJPG for Mac',
+    chip: {
+      silicon: 'Apple Silicon (M1/M2/M3)',
+      intel: 'Intel 芯片',
+    },
+    button: {
+      dmg: '下载 .dmg',
+    },
+    designedFor: '专为 macOS 设计',
+    requires: '需要 macOS 11.0 或更高版本。',
+    otherPlatforms: '寻找其他平台？',
+    comingSoon: '即将推出',
+    history: '历史版本',
+    loading: '加载版本与中...',
+    latest: '最新版本',
+  },
+  tools: {
     sorryCard: {
       name: '道歉卡',
       description: '为任何场合创建真挚的道歉卡。',
@@ -496,6 +562,14 @@ tools: {
       description:
         '为俱乐部、组织和企业创建会员卡。设计包含会员信息的专业会员卡。',
     },
+    colorTone: {
+      name: '配色生成器',
+      description: '从图片中提取精美的配色方案，或为您的设计生成新的颜色组合。',
+    },
+    redEnvelope: {
+      name: '红包封面生成器',
+      description: '为特殊场合设计自定义红包封面。创建独特且喜庆的电子红包。',
+    },
     tryNow: '立即试用',
     comingSoon: '即将推出',
   },
@@ -516,6 +590,7 @@ tools: {
   },
   footer: {
     copyright: 'MemeJPG - 满足您所有的图片编辑需求。',
+    friendlyLinks: '友情链接',
   },
   about: {
     title: '关于 MemeJPG',
@@ -779,11 +854,34 @@ const ja = {
     about: 'について',
     blog: 'ブログ',
     slogan: 'シンプルな画像ツール',
+    theme: {
+      light: 'ライトモード',
+      dark: 'ダークモード',
+      auto: '自動',
+    },
   },
   hero: {
     title: 'MemeJPGへようこそ',
     subtitle: 'すべての画像編集ニーズに対応',
     exploreTools: 'ツールを探索',
+    newApp: '新着: Macアプリが利用可能',
+  },
+  download: {
+    title: 'MemeJPG for Mac',
+    chip: {
+      silicon: 'Appleシリコン (M1/M2/M3)',
+      intel: 'Intelチップ',
+    },
+    button: {
+      dmg: '.dmgをダウンロード',
+    },
+    designedFor: 'macOS向けに設計',
+    requires: 'macOS 11.0以降が必要です。',
+    otherPlatforms: '他のプラットフォームをお探しですか？',
+    comingSoon: '近日公開',
+    history: '履歴バージョン',
+    loading: 'バージョンを読み込み中...',
+    latest: '最新',
   },
   tools: {
     sorryCard: {
@@ -895,6 +993,7 @@ const ja = {
   },
   footer: {
     copyright: 'MemeJPG - すべての画像編集ニーズに対応。',
+    friendlyLinks: 'リンク',
   },
   about: {
     title: 'MemeJPGについて',

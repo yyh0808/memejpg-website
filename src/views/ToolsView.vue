@@ -2,10 +2,10 @@
   <v-container class="py-16">
     <v-row class="mb-8">
       <v-col cols="12" class="text-center">
-        <h1 class="text-h3 font-weight-bold text-grey-darken-3 font-modern mb-4">
+        <h1 class="text-h3 font-weight-bold text-high-emphasis font-modern mb-4">
           Online Tools
         </h1>
-        <p class="text-h6 text-grey-darken-1 font-weight-regular max-w-lg mx-auto">
+        <p class="text-h6 text-medium-emphasis font-weight-regular max-w-lg mx-auto">
           Explore our complete suite of free online image utilities.
         </p>
       </v-col>
@@ -16,16 +16,16 @@
         <a :href="tool.url" target="_blank" class="text-decoration-none">
           <v-card class="glass-card h-100 pa-4" variant="flat">
             <div class="d-flex align-center mb-4">
-              <div class="rounded-lg pa-3 bg-indigo-lighten-5 text-primary mr-4">
+              <div class="rounded-lg pa-3 bg-surface-variant text-primary mr-4">
                 <v-icon size="28">{{ tool.icon }}</v-icon>
               </div>
             </div>
             
-            <h3 class="text-h6 font-weight-bold text-grey-darken-3 mb-2 font-modern">
+            <h3 class="text-h6 font-weight-bold text-high-emphasis mb-2 font-modern">
                 {{ $t(tool.nameKey) }}
             </h3>
 
-            <p class="text-body-2 text-grey-darken-1 mb-4 line-clamp-2">
+            <p class="text-body-2 text-medium-emphasis mb-4 line-clamp-2">
               {{ $t(tool.descriptionKey) }}
             </p>
             

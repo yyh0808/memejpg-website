@@ -143,4 +143,20 @@ export const tools = [
         url: 'https://membership.memejpg.com',
         available: true,
     },
+    {
+        id: 19,
+        nameKey: 'tools.colorTone.name',
+        descriptionKey: 'tools.colorTone.description',
+        icon: 'mdi-palette',
+        url: 'https://colortone.memejpg.com',
+        available: true,
+    },
+    {
+        id: 20,
+        nameKey: 'tools.redEnvelope.name',
+        descriptionKey: 'tools.redEnvelope.description',
+        icon: 'mdi-email-newsletter',
+        url: 'https://redenvelope.memejpg.com',
+        available: true,
+    },
 ]

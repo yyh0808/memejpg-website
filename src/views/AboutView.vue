@@ -6,7 +6,7 @@
         <h1 class="text-h2 font-weight-bold text-primary mb-4">
           {{ $t('about.title') }}
         </h1>
-        <p class="text-h6 text-grey-darken-1 max-w-3xl mx-auto">
+        <p class="text-h6 text-medium-emphasis max-w-3xl mx-auto">
           {{ $t('about.subtitle') }}
         </p>
       </v-col>
@@ -17,10 +17,10 @@
       <v-col cols="12" md="6" class="d-flex align-center">
         <div>
           <h2 class="text-h3 font-weight-bold mb-4">{{ $t('about.mission.title') }}</h2>
-          <p class="text-body-1 text-grey-darken-1 mb-4">
+          <p class="text-body-1 text-medium-emphasis mb-4">
             {{ $t('about.mission.description1') }}
           </p>
-          <p class="text-body-1 text-grey-darken-1">
+          <p class="text-body-1 text-medium-emphasis">
             {{ $t('about.mission.description2') }}
           </p>
         </div>
@@ -44,7 +44,7 @@
           <v-card-item>
             <div class="d-flex align-center mb-4">
               <v-avatar size="60" color="primary" class="mr-4">
-                <v-icon size="30" color="white">{{ tool.icon }}</v-icon>
+                <v-icon size="30">{{ tool.icon }}</v-icon>
               </v-avatar>
               <div>
                 <v-card-title class="pa-0">{{ $t(tool.nameKey) }}</v-card-title>
@@ -83,7 +83,7 @@
     </v-row>
 
     <!-- Values Section -->
-    <v-row class="py-16 bg-grey-lighten-4 rounded-lg">
+    <v-row class="py-16 bg-surface-variant rounded-lg">
       <v-col cols="12">
         <h2 class="text-h3 font-weight-bold text-center mb-12">{{ $t('about.values.title') }}</h2>
       </v-col>
@@ -94,7 +94,7 @@
         </v-avatar>
 
         <h3 class="text-h5 font-weight-bold mb-3">{{ $t(value.titleKey) }}</h3>
-        <p class="text-body-1 text-grey-darken-1">{{ $t(value.descriptionKey) }}</p>
+        <p class="text-body-1 text-medium-emphasis">{{ $t(value.descriptionKey) }}</p>
       </v-col>
     </v-row>
 
@@ -102,7 +102,7 @@
     <v-row class="mt-16">
       <v-col cols="12" class="text-center">
         <h2 class="text-h3 font-weight-bold mb-4">{{ $t('about.contact.title') }}</h2>
-        <p class="text-body-1 text-grey-darken-1 mb-6">
+        <p class="text-body-1 text-medium-emphasis mb-6">
           {{ $t('about.contact.description') }}
         </p>
 

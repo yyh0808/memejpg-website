@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-grey-lighten-5 pt-24 pb-16">
+  <div class="min-h-screen bg-background pt-24 pb-16">
     <v-container>
       <v-row justify="center">
         <v-col cols="12" md="10" lg="8">
-          <div class="bg-white rounded-xl shadow-sm pa-8 pa-md-12">
-            <h1 class="text-h3 font-weight-bold mb-8 text-grey-darken-3 font-modern">Privacy Policy</h1>
+          <div class="bg-surface rounded-xl shadow-sm pa-8 pa-md-12">
+            <h1 class="text-h3 font-weight-bold mb-8 text-high-emphasis font-modern">Privacy Policy</h1>
             
-            <div class="text-body-1 text-grey-darken-2 content-space">
+            <div class="text-body-1 text-medium-emphasis content-space">
               <p class="mb-6">Last updated: {{ new Date().toLocaleDateString() }}</p>
 
               <section class="mb-8">

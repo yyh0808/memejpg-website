@@ -1,7 +1,7 @@
 <template>
   <v-menu>
     <template v-slot:activator="{ props }">
-      <v-btn v-bind="props" variant="text" color="white" class="mx-2" prepend-icon="mdi-translate">
+      <v-btn v-bind="props" variant="text" color="medium-emphasis" class="mx-2" prepend-icon="mdi-translate">
         {{ currentLanguageLabel }}
       </v-btn>
     </template>
