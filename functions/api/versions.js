@@ -45,7 +45,7 @@ export async function onRequest(context) {
                     key: key,
                     size: object.size,
                     arch: arch,
-                    url: `/minio-api/${key}` // We might need a download proxy or public URL
+                    url: `/download-api?version=${version}&arch=${arch}`
                 });
             }
         }

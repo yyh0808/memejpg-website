@@ -1,107 +1,112 @@
 export async function onRequest(context) {
     const { request, env } = context;
 
+    // R2 public domain for fallback redirects
+    const R2_PUBLIC_DOMAIN = "https://download.memejpg.com";
+
     // Basic security: Check Referer to prevent hotlinking
     const referer = request.headers.get("Referer");
-    const allowedDomain = "memejpg.com"; // Adjust if testing locally or on other domains
-
-    // Allow if no referer (direct access) or matches domain? 
-    // User said "ensure download file is from main site click buttons"
-    // So likely we WANT to enforce Referer or Origin.
+    const allowedDomain = "memejpg.com";
 
     if (!referer || (!referer.includes(allowedDomain) && !referer.includes("localhost"))) {
-        // Optional: Redirect to download page instead of erroring
         return Response.redirect("https://memejpg.com/download", 302);
     }
 
     // Determine architecture from query param
     const url = new URL(request.url);
-    const arch = url.searchParams.get("arch");
-    const version = url.searchParams.get("version"); // Support specific version download
-
-    // If R2 binding is available, we could dynamically find the key.
-    // For now, we assume a naming convention or just redirect to fixed latest URLs
-    // BUT the user asked to "automatically read R2 latest version".
-    // Efficient way: Redirect to logical filename, and let a separate R2 retrieval function handle the stream or presigned URL.
-    // Or, we list here and find the file.
-
-    // For simplicity and performance, if specific version is requested, we try to construct that key.
-    // If not, we look for "latest" logical concept or perform a list (which might be slow-ish but acceptable).
+    const arch = url.searchParams.get("arch") || "arm64";
+    const version = url.searchParams.get("version");
 
     try {
+        // Check if R2 binding is available
+        if (!env.R2_BUCKET) {
+            // R2 not bound - redirect to public R2 domain with version if specified
+            if (version) {
+                const filename = `MemeJPG-${version}-${arch}.dmg`;
+                return Response.redirect(`${R2_PUBLIC_DOMAIN}/${filename}`, 302);
+            }
+            // Without version and without R2 binding, we can't determine latest
+            return new Response(JSON.stringify({
+                error: "R2_BUCKET binding not configured. Please check Cloudflare Pages settings."
+            }), {
+                status: 500,
+                headers: { "Content-Type": "application/json" }
+            });
+        }
+
+        // List objects in R2 bucket
+        const listed = await env.R2_BUCKET.list();
+
+        // Filter by architecture
+        // Naming convention: MemeJPG-{Version}-{arch}.dmg
+        const files = listed.objects.filter(o => {
+            const k = o.key.toLowerCase();
+            if (!k.endsWith('.dmg')) return false;
+
+            if (arch === 'arm64') {
+                return k.includes('arm64') || k.includes('applesilicon');
+            } else if (arch === 'x64') {
+                return k.includes('x64') || k.includes('intel');
+            }
+            return false;
+        });
+
+        if (files.length === 0) {
+            return new Response(JSON.stringify({
+                error: `No ${arch} DMG files found in R2 bucket`
+            }), {
+                status: 404,
+                headers: { "Content-Type": "application/json" }
+            });
+        }
+
+        // Sort by semantic version (extract version from filename)
+        files.sort((a, b) => {
+            const versionA = a.key.match(/(\d+\.\d+\.\d+)/)?.[1] || "0.0.0";
+            const versionB = b.key.match(/(\d+\.\d+\.\d+)/)?.[1] || "0.0.0";
+            return versionB.localeCompare(versionA, undefined, { numeric: true, sensitivity: 'base' });
+        });
+
         let objectKey = null;
 
-        if (env.R2_BUCKET) {
-            // If we have R2, let's find the correct file
-            const listed = await env.R2_BUCKET.list();
-
-            // Filter by arch
-            const files = listed.objects.filter(o => {
-                const k = o.key.toLowerCase();
-                const isDmg = k.endsWith('.dmg');
-                if (!isDmg) return false;
-
-                if (arch === 'arm64') {
-                    return k.includes('arm64') || k.includes('applesilicon') || k.includes('m1');
-                } else if (arch === 'x64') {
-                    return k.includes('x64') || k.includes('intel');
-                }
-                return true; // Universal? or just fallback
-            });
-
-            // Sort by version (naive timestamp sort or semantic version sort)
-            // Using uploaded timestamp for simplicity as "latest"
-            files.sort((a, b) => new Date(b.uploaded) - new Date(a.uploaded));
-
-            if (files.length > 0) {
-                if (version) {
-                    // Try to find specific version
-                    const vFile = files.find(f => f.key.includes(version));
-                    if (vFile) objectKey = vFile.key;
-                } else {
-                    // Default to latest
-                    objectKey = files[0].key;
-                }
-            }
-        }
-
-        if (objectKey) {
-            // Get the object from R2 (api/download/[key] style?)
-            // Or easier: redirect to a public R2 domain if configured.
-            // User didn't specify public R2 domain, just R2 bucket.
-            // If R2 bucket is private, we must serve it via worker.
-
-            const object = await env.R2_BUCKET.get(objectKey);
-            if (!object) {
-                return new Response("File not found", { status: 404 });
-            }
-
-            const headers = new Headers();
-            object.writeHttpMetadata(headers);
-            headers.set("etag", object.httpEtag);
-
-            return new Response(object.body, {
-                headers,
-            });
-        }
-
-        // Fallback if R2 not configured or empty: Redirect to hardcoded
-        let r2DownloadUrl = "https://r2.memejpg.com/MemeJPG-Mac-Universal.dmg"; // Default
-
-        if (arch === 'arm64') {
-            r2DownloadUrl = "https://r2.memejpg.com/MemeJPG-Mac-AppleSilicon.dmg";
-        } else if (arch === 'x64') {
-            r2DownloadUrl = "https://r2.memejpg.com/MemeJPG-Mac-Intel.dmg";
-        }
-
-        // If version specified in fallback mode?
         if (version) {
-            // Append version? No standard way without storage.
-            // Just ignore or try to guess.
+            // Find specific version
+            const vFile = files.find(f => f.key.includes(version));
+            if (vFile) {
+                objectKey = vFile.key;
+            } else {
+                return new Response(JSON.stringify({
+                    error: `Version ${version} not found for ${arch}`
+                }), {
+                    status: 404,
+                    headers: { "Content-Type": "application/json" }
+                });
+            }
+        } else {
+            // Get latest version (first after sorting)
+            objectKey = files[0].key;
         }
 
-        return Response.redirect(r2DownloadUrl, 302);
+        // Stream file directly from R2
+        const object = await env.R2_BUCKET.get(objectKey);
+        if (!object) {
+            return new Response(JSON.stringify({ error: "File not found in R2" }), {
+                status: 404,
+                headers: { "Content-Type": "application/json" }
+            });
+        }
+
+        const headers = new Headers();
+        object.writeHttpMetadata(headers);
+        headers.set("etag", object.httpEtag);
+        headers.set("Content-Disposition", `attachment; filename="${objectKey}"`);
+
+        return new Response(object.body, { headers });
+
     } catch (e) {
-        return new Response(`Error: ${e.message}`, { status: 500 });
+        return new Response(JSON.stringify({ error: e.message }), {
+            status: 500,
+            headers: { "Content-Type": "application/json" }
+        });
     }
 }
