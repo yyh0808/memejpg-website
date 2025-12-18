@@ -52,16 +52,6 @@
              <v-icon>{{ themeIcon }}</v-icon>
              <v-tooltip activator="parent" location="bottom" content-class="bg-surface-variant text-high-emphasis">{{ $t(themeLabel) }}</v-tooltip>
           </v-btn>
-          
-          <v-btn
-            to="/tools"
-            color="primary"
-            variant="text"
-             class="hidden-sm-and-down ml-2 font-weight-bold"
-            rounded="xl"
-          >
-            Online Tools
-          </v-btn>
 
           <v-btn
             to="/download"
@@ -73,7 +63,56 @@
           >
             Mac App
           </v-btn>
-          
+
+          <!-- User Auth Section -->
+          <template v-if="userStore.isLoggedIn">
+            <v-menu offset-y>
+              <template v-slot:activator="{ props }">
+                <v-btn
+                  v-bind="props"
+                  variant="text"
+                  class="ml-2"
+                  rounded="xl"
+                >
+                  <v-avatar size="32" color="primary" class="mr-2">
+                    <v-icon size="20" color="white">mdi-account</v-icon>
+                  </v-avatar>
+                  <span class="hidden-sm-and-down">{{ userStore.user?.email?.split('@')[0] }}</span>
+                  <v-icon end>mdi-chevron-down</v-icon>
+                </v-btn>
+              </template>
+              <v-list density="compact" min-width="180">
+                <v-list-item to="/profile" prepend-icon="mdi-account-circle">
+                  <v-list-item-title>{{ $t('auth.profile.title') }}</v-list-item-title>
+                </v-list-item>
+                <v-divider />
+                <v-list-item @click="userStore.logout()" prepend-icon="mdi-logout" class="text-error">
+                  <v-list-item-title>{{ $t('auth.logout') }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </template>
+          <template v-else>
+            <v-btn
+              to="/login"
+              variant="text"
+              density="comfortable"
+              class="hidden-sm-and-down ml-2"
+              rounded="xl"
+            >
+              {{ $t('auth.login.title') }}
+            </v-btn>
+            <v-btn
+              to="/register"
+              variant="text"
+              density="comfortable"
+              class="hidden-sm-and-down ml-1"
+              rounded="xl"
+            >
+              {{ $t('auth.register.title') }}
+            </v-btn>
+          </template>
+
           <!-- Mobile Menu Button (TODO: Implement full drawer if needed, for now just simple) -->
         </div>
       </v-container>
@@ -117,7 +156,7 @@
             <div class="d-flex flex-column gap-2">
               <router-link to="/" class="text-body-2 text-medium-emphasis text-decoration-none hover:text-primary mb-2">Tools</router-link>
               <router-link to="/download" class="text-body-2 text-medium-emphasis text-decoration-none hover:text-primary mb-2">Mac App</router-link>
-              <a href="#" class="text-body-2 text-medium-emphasis text-decoration-none hover:text-primary mb-2">Pricing</a>
+              <router-link to="/pricing" class="text-body-2 text-medium-emphasis text-decoration-none hover:text-primary mb-2">Pricing</router-link>
             </div>
           </v-col>
 
@@ -174,12 +213,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 import { useTheme } from 'vuetify'
 import LanguageSwitcher from './components/LanguageSwitcher.vue'
 import { useSEO } from './composables/useSEO'
 import { tools } from './data/tools'
+import { useUserStore } from './stores/user'
+
+const userStore = useUserStore()
 
 // Initialize SEO management
 useSEO()
@@ -245,6 +287,7 @@ onMounted(() => {
 const navigation = [
   { name: 'nav.home', path: '/' },
   { name: 'OnlineTools', path: '/tools' },
+  { name: 'Pricing', path: '/pricing' },
   { name: 'nav.about', path: '/about' },
   { name: 'MacOS App', path: '/download' }, 
   { name: 'nav.blog', path: 'https://blog.memejpg.com', external: true },

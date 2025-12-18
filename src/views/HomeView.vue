@@ -23,19 +23,19 @@
               <v-btn
                 color="primary"
                 size="large"
-                class="btn-gradient-primary px-8"
+                class="btn-gradient-primary px-8 hero-cta-btn"
                 rounded="xl"
                 height="54"
-                @click="scrollToTools"
+                to="/tools"
               >
-                {{ $t('hero.exploreTools') }}
+                Free OnlineTools
               </v-btn>
               
               <v-btn
                 to="/download"
                 variant="outlined"
                 color="white"
-                class="bg-white text-grey-darken-3 px-8 border-opacity-100"
+                class="bg-white text-grey-darken-3 px-8 border-opacity-100 hero-cta-btn"
                 rounded="xl"
                 height="54"
                 prepend-icon="mdi-apple"
@@ -112,10 +112,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { tools as toolsData } from '../data/tools'
-
-const heroImage = '/logo-large.svg'
 
 // Use first 8 tools for home page, or all? User said "put all online sub-functional websites on homepage... again with card style".
 // The user said "Tool list page... display all online sub-function websites on homepage again".
@@ -142,14 +140,13 @@ const features = ref([
     icon: 'mdi-heart',
   },
 ])
-
-const scrollToTools = () => {
-  const element = document.getElementById('tools-section')
-  element?.scrollIntoView({ behavior: 'smooth' })
-}
 </script>
 
 <style scoped>
+.hero-cta-btn {
+  border-radius: 32px !important;
+}
+
 .tool-card {
   transition: transform 0.3s ease-in-out;
 }

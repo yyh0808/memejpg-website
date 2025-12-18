@@ -1,9 +1,7 @@
-
-
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
-const downloadUrl = '/download-api' // Points to CF Function
+const downloadUrl = '/api/download' // Points to Worker API via Pages Function
 const latestVersion = ref<string | null>(null)
 const loadingVersion = ref(true)
 
@@ -27,7 +25,7 @@ const features = ref([
 
 onMounted(async () => {
     try {
-        const res = await fetch('/api/versions')
+        const res = await fetch('/api/download/versions')
         if (res.ok) {
             const data = await res.json()
             if (data.latest && data.latest.version) {
@@ -118,14 +116,29 @@ onMounted(async () => {
         <v-col cols="12" class="text-center mb-8">
            <h2 class="text-h5 font-weight-bold text-high-emphasis font-modern">{{ $t('download.designedFor') }}</h2>
         </v-col>
-        
-        <v-col cols="12" md="4" v-for="(feature, i) in features" :key="i">
-           <div class="d-flex align-start pa-4 justify-center justify-md-start">
-              <v-icon color="success" icon="mdi-check-circle" class="mr-3 mt-1 flex-shrink-0" size="small"></v-icon>
-              <div class="text-body-1 font-weight-medium text-medium-emphasis text-left">
-                  {{ feature }}
-              </div>
-           </div>
+
+        <v-col cols="12" md="10" lg="8">
+          <v-card class="glass-card" variant="flat">
+            <v-table density="comfortable">
+              <tbody>
+                <tr v-for="(feature, i) in features" :key="i">
+                  <td>
+                    <div class="d-flex align-start pa-4">
+                      <v-icon
+                        color="success"
+                        icon="mdi-check-circle"
+                        class="mr-3 mt-1 flex-shrink-0"
+                        size="small"
+                      ></v-icon>
+                      <div class="text-body-1 font-weight-medium text-medium-emphasis">
+                        {{ feature }}
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </v-table>
+          </v-card>
         </v-col>
       </v-row>
       
@@ -144,4 +157,3 @@ onMounted(async () => {
     </v-container>
   </div>
 </template>
-```

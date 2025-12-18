@@ -1,0 +1,11 @@
+export {}
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: HTMLElement, params: Record<string, unknown>) => string
+      reset: (widgetId: string) => void
+      remove: (widgetId: string) => void
+    }
+  }
+}

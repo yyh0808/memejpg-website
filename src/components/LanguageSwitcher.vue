@@ -1,8 +1,8 @@
 <template>
   <v-menu>
     <template v-slot:activator="{ props }">
-      <v-btn v-bind="props" variant="text" color="medium-emphasis" class="mx-2" prepend-icon="mdi-translate">
-        {{ currentLanguageLabel }}
+      <v-btn v-bind="props" variant="text" color="medium-emphasis" class="mx-2" icon>
+        <v-icon icon="mdi-translate" />
       </v-btn>
     </template>
     <v-list>
@@ -22,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { locale } = useI18n()
@@ -37,11 +36,6 @@ const languages = [
   { code: 'fr', name: 'Français', flag: 'mdi-flag' },
   { code: 'de', name: 'Deutsch', flag: 'mdi-flag' },
 ]
-
-const currentLanguageLabel = computed(() => {
-  const current = languages.find((lang) => lang.code === locale.value)
-  return current?.name || 'English'
-})
 
 const changeLanguage = (langCode: string) => {
   locale.value = langCode

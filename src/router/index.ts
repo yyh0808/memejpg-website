@@ -23,6 +23,11 @@ const router = createRouter({
       component: () => import('../views/DownloadView.vue'),
     },
     {
+      path: '/pricing',
+      name: 'pricing',
+      component: () => import('../views/PricingView.vue'),
+    },
+    {
       path: '/tools',
       name: 'tools',
       component: () => import('../views/ToolsView.vue'),
@@ -41,6 +46,31 @@ const router = createRouter({
       path: '/terms',
       name: 'terms',
       component: () => import('../views/TermsView.vue'),
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue'),
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/RegisterView.vue'),
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../views/ProfileView.vue'),
+    },
+    {
+      path: '/forgot-password',
+      name: 'forgot-password',
+      component: () => import('../views/ForgotPasswordView.vue'),
+    },
+    {
+      path: '/auth/client',
+      name: 'client-auth',
+      component: () => import('../views/ClientAuthView.vue'),
     },
     {
       // Catch all route for 404 pages
