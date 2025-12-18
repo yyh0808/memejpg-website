@@ -27,15 +27,16 @@ export async function onRequest(context) {
         })
       }
 
-      const successUrl = body.successUrl
-      const cancelUrl = body.cancelUrl
+      const successUrl = body.successUrl || ''
+      const cancelUrl = body.cancelUrl || ''
+
+      const forwardHeaders = new Headers(headers)
+      forwardHeaders.delete('content-length')
+      forwardHeaders.set('Content-Type', 'application/json')
 
       const response = await fetch(targetUrl, {
         method: 'POST',
-        headers: new Headers({
-          ...Object.fromEntries(headers.entries()),
-          'Content-Type': 'application/json',
-        }),
+        headers: forwardHeaders,
         body: JSON.stringify({ priceId, successUrl, cancelUrl }),
       })
 

@@ -6,7 +6,7 @@ import { useUserStore } from '@/stores/user'
 const router = useRouter()
 const userStore = useUserStore()
 
-const proPriceLabel = 'US$29'
+const proPriceLabel = 'US$9'
 
 const buying = ref(false)
 const buyError = ref<string | null>(null)
@@ -115,7 +115,7 @@ async function onBuyPro() {
 
             <div class="d-flex align-end mb-4" style="gap: 10px;">
               <div class="text-h4 font-weight-black text-high-emphasis">{{ proPriceLabel }}</div>
-              <div class="text-body-2 text-medium-emphasis">lifetime license</div>
+              <div class="text-body-2 text-medium-emphasis">lifetime license (excl. tax)</div>
             </div>
 
             <div class="text-body-2 text-medium-emphasis mb-6">
