@@ -35,6 +35,27 @@ const en = {
     history: 'History Versions',
     loading: 'Loading version...',
     latest: 'Latest',
+    backToDownload: 'Back to Download',
+    versionHistory: 'Version History',
+    versionHistorySubtitle: 'Download previous versions of MemeJPG for Mac.',
+    unableToLoad: 'Unable to load versions',
+    retry: 'Retry',
+    noVersionsFound: 'No versions found',
+    version: 'Version',
+    releasedOn: 'Released on:',
+    appleSilicon: 'Apple Silicon',
+    intel: 'Intel',
+    universal: 'Universal',
+    unknownDate: 'Unknown date',
+  },
+  home: {
+    heroTitle: 'Master Your Images with',
+    heroTitleHighlight: 'MemeJPG Tools',
+    heroSubtitleFallback: 'Online image tools for everyone. Resize, compress, remove backgrounds, and more—instantly in your browser.',
+    freeOnlineTools: 'Free Online Tools',
+    downloadForMac: 'Download for Mac',
+    ourTools: 'Our Tools',
+    professionalTools: 'Professional grade tools, completely free.',
   },
   'tools': {
     sorryCard: {
@@ -135,6 +156,11 @@ const en = {
     },
     tryNow: 'Try Now',
     comingSoon: 'Coming Soon',
+    launchTool: 'Launch Tool',
+    toolsPage: {
+      title: 'Online Tools',
+      subtitle: 'Explore our complete suite of free online image utilities.',
+    },
   },
   features: {
     title: 'Why Choose MemeJPG?',
@@ -527,8 +553,29 @@ const zh = {
     otherPlatforms: '寻找其他平台？',
     comingSoon: '即将推出',
     history: '历史版本',
-    loading: '加载版本与中...',
+    loading: '加载版本中...',
     latest: '最新版本',
+    backToDownload: '返回下载',
+    versionHistory: '版本历史',
+    versionHistorySubtitle: '下载 MemeJPG for Mac 的以前版本。',
+    unableToLoad: '无法加载版本',
+    retry: '重试',
+    noVersionsFound: '未找到版本',
+    version: '版本',
+    releasedOn: '发布日期：',
+    appleSilicon: 'Apple Silicon',
+    intel: 'Intel',
+    universal: '通用',
+    unknownDate: '未知日期',
+  },
+  home: {
+    heroTitle: '使用',
+    heroTitleHighlight: 'MemeJPG 工具',
+    heroSubtitleFallback: '所有人的在线图片工具。在浏览器中即时调整大小、压缩、移除背景等。',
+    freeOnlineTools: '免费在线工具',
+    downloadForMac: '下载 Mac 版',
+    ourTools: '我们的工具',
+    professionalTools: '专业级工具，完全免费。',
   },
   tools: {
     sorryCard: {
@@ -622,6 +669,11 @@ const zh = {
     },
     tryNow: '立即试用',
     comingSoon: '即将推出',
+    launchTool: '启动工具',
+    toolsPage: {
+      title: '在线工具',
+      subtitle: '探索我们完整的免费在线图片工具套件。',
+    },
   },
   features: {
     title: '为什么选择 MemeJPG？',
@@ -1987,11 +2039,17 @@ const nl = {
     about: 'Over',
     blog: 'Blog',
     slogan: 'Eenvoudige Afbeeldingstools',
+    theme: {
+      light: 'Lichte Modus',
+      dark: 'Donkere Modus',
+      auto: 'Automatisch',
+    },
   },
   hero: {
     title: 'Welkom bij MemeJPG',
     subtitle: 'Behandel al je beeldbewerkingsbehoeften',
     exploreTools: 'Verken Tools',
+    newApp: 'Nieuw: Mac App Beschikbaar',
   },
   tools: {
     sorryCard: {
@@ -2047,8 +2105,56 @@ const nl = {
       description:
         'Slimme tekst obfuscatie om detectie-resistente afbeeldingen te genereren voor privé domein verkeer conversie. Creëer aantrekkelijke visuals die inhoudsfilters omzeilen.',
     },
+    businessCardGenerator: {
+      name: 'Visitekaartje Generator',
+      description:
+        'Maak professionele visitekaartjes met aanpasbare sjablonen en ontwerpen. Genereer hoogwaardige visitekaartjes voor netwerken en zakelijke doeleinden.',
+    },
+    qrCodeGenerator: {
+      name: 'QR Code Generator',
+      description:
+        'Genereer QR codes voor verschillende doeleinden, waaronder URL\'s, tekst, contactgegevens en meer. Maak aanpasbare QR codes voor zakelijk en persoonlijk gebruik.',
+    },
+    bookmarkGenerator: {
+      name: 'Bladwijzer Generator',
+      description:
+        'Maak mooie bladwijzers voor lezen en organisatie. Ontwerp gepersonaliseerde bladwijzers met aangepaste tekst, afbeeldingen en lay-outs.',
+    },
+    invitationGenerator: {
+      name: 'Uitnodiging Generator',
+      description:
+        'Genereer elegante uitnodigingen voor evenementen, feesten en speciale gelegenheden. Maak professionele uitnodigingen met aanpasbare sjablonen.',
+    },
+    giftCardGenerator: {
+      name: 'Cadeaukaart Generator',
+      description:
+        'Maak aantrekkelijke cadeaukaarten voor bedrijven en persoonlijk gebruik. Ontwerp aangepaste cadeaukaarten met verschillende thema\'s en waarden.',
+    },
+    serviceCardGenerator: {
+      name: 'Servicekaart Generator',
+      description:
+        'Genereer professionele servicekaarten voor after-sales ondersteuning en klantenservice. Maak informatieve servicekaarten met contactgegevens.',
+    },
+    membershipCardGenerator: {
+      name: 'Lidmaatschapkaart Generator',
+      description:
+        'Maak lidmaatschapkaarten voor clubs, organisaties en bedrijven. Ontwerp professionele lidmaatschapkaarten met lidinformatie.',
+    },
+    colorTone: {
+      name: 'Kleurenpalet Generator',
+      description: 'Extraheer mooie kleurenpaletten uit afbeeldingen of genereer nieuwe kleurencombinaties voor je ontwerpen.',
+    },
+    redEnvelope: {
+      name: 'Rode Enveloppe Omslag Generator',
+      description: 'Ontwerp aangepaste rode enveloppe omslagen voor speciale gelegenheden. Maak unieke en feestelijke digitale rode enveloppen.',
+    },
     tryNow: 'Probeer Nu',
     comingSoon: 'Binnenkort',
+    launchTool: 'Start Tool',
+    toolsPage: {
+      title: 'Online Tools',
+      subtitle: 'Verken onze complete suite van gratis online afbeeldingshulpprogramma\'s.',
+    },
   },
   features: {
     title: 'Waarom MemeJPG kiezen?',
@@ -2069,6 +2175,45 @@ const nl = {
   },
   footer: {
     copyright: 'MemeJPG - Behandel al je beeldbewerkingsbehoeften.',
+    friendlyLinks: 'Vriendelijke Links',
+  },
+  download: {
+    title: 'MemeJPG voor Mac',
+    chip: {
+      silicon: 'Apple Silicon (M1/M2/M3)',
+      intel: 'Intel Chip',
+    },
+    button: {
+      dmg: 'Download .dmg',
+    },
+    designedFor: 'Ontworpen voor macOS',
+    requires: 'Vereist macOS 11.0 of later.',
+    otherPlatforms: 'Zoek je andere platforms?',
+    comingSoon: 'Binnenkort',
+    history: 'Vorige Versies',
+    loading: 'Versie laden...',
+    latest: 'Nieuwste',
+    backToDownload: 'Terug naar Download',
+    versionHistory: 'Versiegeschiedenis',
+    versionHistorySubtitle: 'Download eerdere versies van MemeJPG voor Mac.',
+    unableToLoad: 'Kan versies niet laden',
+    retry: 'Opnieuw proberen',
+    noVersionsFound: 'Geen versies gevonden',
+    version: 'Versie',
+    releasedOn: 'Uitgebracht op',
+    appleSilicon: 'Apple Silicon',
+    intel: 'Intel',
+    universal: 'Universeel',
+    unknownDate: 'Onbekende datum',
+  },
+  home: {
+    heroTitle: 'Beheer Je Afbeeldingen met',
+    heroTitleHighlight: 'MemeJPG Tools',
+    heroSubtitleFallback: 'Online afbeeldingshulpprogramma\'s voor iedereen. Wijzig grootte, comprimeer, verwijder achtergronden en meer—direct in je browser.',
+    freeOnlineTools: 'Gratis Online Tools',
+    downloadForMac: 'Download voor Mac',
+    ourTools: 'Onze Tools',
+    professionalTools: 'Professionele tools, volledig gratis.',
   },
   auth: {
     email: 'E-mail',
@@ -2108,6 +2253,296 @@ const nl = {
       passwordMinLength: 'Wachtwoord moet minimaal 6 tekens bevatten',
       confirmPasswordRequired: 'Bevestig je wachtwoord',
       passwordMismatch: 'Wachtwoorden komen niet overeen',
+      turnstileRequired: 'Voltooi de beveiligingsverificatie',
+    },
+    forgotPassword: {
+      title: 'Wachtwoord Opnieuw Instellen',
+      subtitle: 'Voer je e-mailadres in om een wachtwoord reset link te ontvangen.',
+      submit: 'Verstuur Reset Link',
+      success: 'Als er een account bestaat met dit e-mailadres, ontvang je een wachtwoord reset link.',
+      error: 'Verzenden van reset link mislukt. Probeer het opnieuw.',
+      backToLogin: 'Terug naar Inloggen',
+    },
+  },
+  about: {
+    title: 'Over MemeJPG',
+    subtitle:
+      'Je one-stop bestemming voor al je beeldbewerkingsbehoeften. We bieden krachtige, gratis en privacy-gerichte tools die volledig in je browser werken.',
+    mission: {
+      title: 'Onze Missie',
+      description1:
+        'Bij MemeJPG geloven we dat krachtige beeldbewerkingshulpprogramma\'s voor iedereen toegankelijk moeten zijn. Onze missie is om hoogwaardige, browsergebaseerde beeldverwerkingstools te bieden die je privacy respecteren en geen downloads of abonnementen vereisen.',
+      description2:
+        'Of je nu memes maakt, afbeeldingen optimaliseert voor het web, of gewoon snelle beeldbewerkingen nodig hebt, we hebben je gedekt met onze suite van gebruiksvriendelijke tools.',
+      tagline: 'Eenvoudig. Snel. Veilig.',
+    },
+    tools: {
+      title: 'Onze Tools',
+      tryNow: 'Probeer Nu',
+      available: 'Beschikbaar',
+      comingSoon: 'Binnenkort',
+      features: 'Functies:',
+    },
+    values: {
+      title: 'Waarom We Anders Zijn',
+      privacy: {
+        title: 'Privacy Eerst',
+        description:
+          'Alle beeldverwerking gebeurt lokaal in je browser. Je afbeeldingen verlaten nooit je apparaat.',
+      },
+      free: {
+        title: 'Altijd Gratis',
+        description:
+          'Geen abonnementen, geen verborgen kosten, geen limieten. Al onze tools zijn volledig gratis te gebruiken.',
+      },
+      noInstall: {
+        title: 'Geen Installatie',
+        description:
+          'Browsergebaseerde tools betekenen geen downloads, geen installaties en geen systeemvereisten.',
+      },
+    },
+    contact: {
+      title: 'Neem Contact Op',
+      description: 'Heb je vragen, suggesties of wil je bijdragen? We horen graag van je!',
+      github: 'GitHub',
+      email: 'E-mail Ons',
+      twitter: 'Twitter',
+    },
+    toolsDetail: {
+      backgroundRemover: {
+        name: 'Achtergrond Verwijderaar',
+        description: 'Verwijder automatisch achtergronden van meerdere afbeeldingen in batches met geavanceerde AI-technologie.',
+        features: [
+          'Batchverwerking voor meerdere afbeeldingen',
+          'AI-aangedreven achtergrondverwijdering',
+          'Hoogwaardige transparante PNG-uitvoer',
+          'Ondersteuning voor verschillende afbeeldingsformaten',
+          'Geen handmatige bewerking vereist',
+        ],
+      },
+      fontCompressor: {
+        name: 'Lettertype Compressor',
+        description: 'Optimaliseer lettertypebestandsgroottes voor snellere webladen terwijl tekstkwaliteit en leesbaarheid behouden blijven.',
+        features: [
+          'Aanzienlijke bestandsgroottevermindering',
+          'Behoudt lettertypekwaliteit en leesbaarheid',
+          'Ondersteuning voor meerdere lettertypeformaten',
+          'Webprestatie-optimalisatie',
+          'Batch lettertypeverwerking',
+        ],
+      },
+      imageRenamer: {
+        name: 'Afbeelding Herbenamer',
+        description: 'Hernoem efficiënt meerdere afbeeldingen tegelijk met aanpasbare naamgevingspatronen en regels.',
+        features: [
+          'Batch hernoemen voor meerdere bestanden',
+          'Aanpasbare naamgevingspatronen',
+          'Voorvoegsel en achtervoegsel opties',
+          'Sequentiële nummering',
+          'Voorvertoning voordat wijzigingen worden toegepast',
+        ],
+      },
+      imageResizer: {
+        name: 'Afbeelding Grootte Wijziger en Bijsnijder',
+        description: 'Wijzig de grootte en snijd meerdere afbeeldingen bij naar specifieke afmetingen terwijl kwaliteit en beeldverhoudingen behouden blijven.',
+        features: [
+          'Batch grootte wijzigen en bijsnijden',
+          'Aangepaste afmetingsinstellingen',
+          'Behoud van beeldverhouding',
+          'Meerdere uitvoerformaten',
+          'Kwaliteitsoptimalisatie',
+        ],
+      },
+      imageCompressor: {
+        name: 'Afbeelding Compressor',
+        description: 'Comprimeer meerdere afbeeldingen tegelijk om bestandsgroottes te verkleinen zonder visuele kwaliteit te verliezen.',
+        features: [
+          'Batch compressieverwerking',
+          'Verliesvrije en verliesgevende opties',
+          'Aanzienlijke groottevermindering',
+          'Kwaliteitsbehoud',
+          'Ondersteuning voor meerdere formaten',
+        ],
+      },
+      icoConverter: {
+        name: 'ICO Converter',
+        description: 'Converteer afbeeldingen naar ICO-formaat voor het maken van favicons en Windows-pictogrammen met meerdere groottevarianten.',
+        features: [
+          'Generatie van meerdere ICO-groottes',
+          'Ondersteuning voor favicon-aanmaak',
+          'Hoogwaardige conversie',
+          'Windows-pictogramcompatibiliteit',
+          'Batchverwerkingscapaciteit',
+        ],
+      },
+      imageBeautifier: {
+        name: 'Afbeelding Verfraaijer',
+        description: 'Verbeter en verfraai meerdere afbeeldingen met geavanceerde AI-filters en verbeteringsalgoritmen.',
+        features: [
+          'AI-aangedreven beeldverbetering',
+          'Batch verfraaiingsverwerking',
+          'Meerdere filteropties',
+          'Kleurcorrectie en optimalisatie',
+          'Automatische kwaliteitsverbetering',
+          'Helderheid en contrastaanpassing',
+        ],
+      },
+      privateDomainTrafficGenerator: {
+        name: 'Privé Domein Verkeer Afbeelding Generator',
+        description: 'Intelligente tekstobfuscatie technologie om detectie-resistente afbeeldingen te genereren voor privé domein verkeer conversie. Maak aantrekkelijke visuals die contentfilters omzeilen.',
+        features: [
+          'Intelligente tekstobfuscatie algoritmen',
+          'Detectie-resistente afbeeldingsgeneratie',
+          'Contentfilter omzeilingstechnologie',
+          'Privé domein verkeer optimalisatie',
+          'Conversie-gerichte visuele ontwerpen',
+          'Anti-detectie patroongeneratie',
+        ],
+      },
+      businessCardGenerator: {
+        name: 'Visitekaartje Generator',
+        description: 'Maak professionele visitekaartjes met aanpasbare sjablonen en ontwerpen. Perfect voor netwerken, zakelijke bijeenkomsten en professionele branding.',
+        features: [
+          'Professionele visitekaartje sjablonen',
+          'Aanpasbare contactinformatievelden',
+          'Meerdere ontwerpthema\'s en kleuren',
+          'Hoogwaardige printklare uitvoer',
+          'QR-code integratie voor digitale kaarten',
+          'Directe voorvertoning en download',
+        ],
+      },
+      sorryCard: {
+        name: 'Verontschuldigingskaart Generator',
+        description: 'Maak oprechte verontschuldigingskaarten voor persoonlijke en professionele situaties. Druk oprechte spijt uit met prachtig ontworpen kaarten.',
+        features: [
+          'Oprechte verontschuldigingskaart sjablonen',
+          'Aanpasbare verontschuldigingsberichten',
+          'Persoonlijke en professionele thema\'s',
+          'Emotionele ontwerpelementen',
+          'Meerdere kaartformaten beschikbaar',
+          'Eenvoudige personalisatie-opties',
+        ],
+      },
+      greetingCard: {
+        name: 'Wenskaart Generator',
+        description: 'Genereer gepersonaliseerde wenskaarten voor feestdagen, vieringen en speciale gelegenheden. Maak memorabele kaarten met aangepaste berichten en ontwerpen.',
+        features: [
+          'Feestdag en seizoensgebonden kaart sjablonen',
+          'Aanpasbare wensberichten',
+          'Feestelijke ontwerpelementen',
+          'Meerdere gelegenheidscategorieën',
+          'Foto-integratiemogelijkheden',
+          'Print- en digitale deelopties',
+        ],
+      },
+      birthdayCard: {
+        name: 'Verjaardagskaart Generator',
+        description: 'Ontwerp leuke en gepersonaliseerde verjaardagskaarten voor vrienden, familie en collega\'s. Maak unieke verjaardagswensen met aangepaste ontwerpen.',
+        features: [
+          'Leeftijdsgeschikte verjaardagsthemas',
+          'Aanpasbare verjaardagsberichten',
+          'Leuke en kleurrijke ontwerpelementen',
+          'Foto-upload en integratie',
+          'Meerdere kaartgrootte-opties',
+          'Directe download en delen',
+        ],
+      },
+      qrCodeGenerator: {
+        name: 'QR Code Generator',
+        description: 'Genereer QR codes voor verschillende doeleinden, waaronder URL\'s, tekst, contactgegevens, WiFi-referenties en meer. Maak scanbare codes voor moderne digitale interacties.',
+        features: [
+          'Meerdere QR-code gegevenstypen',
+          'URL, tekst en contact QR codes',
+          'WiFi en sociale media QR codes',
+          'Aanpasbaar ontwerp en kleuren',
+          'Hoge resolutie uitvoerformaten',
+          'Batch QR-code generatie',
+        ],
+      },
+      bookmarkGenerator: {
+        name: 'Bladwijzer Generator',
+        description: 'Maak mooie bladwijzers voor leesliefhebbers en studenten. Ontwerp gepersonaliseerde bladwijzers met citaten, afbeeldingen en aangepaste lay-outs.',
+        features: [
+          'Educatieve en literaire thema\'s',
+          'Aanpasbare bladwijzer ontwerpen',
+          'Citaat en afbeeldingsintegratie',
+          'Meerdere bladwijzergroottes',
+          'Printklare PDF-uitvoer',
+          'Lamineer-vriendelijke formaten',
+        ],
+      },
+      invitationGenerator: {
+        name: 'Uitnodiging Generator',
+        description: 'Genereer elegante uitnodigingen voor evenementen, feesten, bruiloften en speciale gelegenheden. Maak professionele uitnodigingen met aanpasbare sjablonen.',
+        features: [
+          'Evenement-specifieke uitnodigingssjablonen',
+          'Bruiloft en feest ontwerpen',
+          'RSVP-informatie integratie',
+          'Datum en tijd aanpassing',
+          'Meerdere uitnodigingsformaten',
+          'Digitale en printklare opties',
+        ],
+      },
+      giftCardGenerator: {
+        name: 'Cadeaukaart Generator',
+        description: 'Maak aantrekkelijke cadeaukaarten voor bedrijven, speciale gelegenheden en persoonlijke geschenken. Ontwerp aangepaste cadeaukaarten met verschillende thema\'s en waarden.',
+        features: [
+          'Zakelijke en persoonlijke cadeaukaarten',
+          'Meerdere waarde-opties',
+          'Seizoensgebonden en thematische ontwerpen',
+          'Beveiligingsfuncties en codes',
+          'Barcode en QR-code integratie',
+          'Professionele branding-opties',
+        ],
+      },
+      serviceCardGenerator: {
+        name: 'Servicekaart Generator',
+        description: 'Genereer professionele servicekaarten voor after-sales ondersteuning, klantenservice en zakelijke communicatie. Maak informatieve kaarten met contactgegevens.',
+        features: [
+          'Professionele servicekaart sjablonen',
+          'Contactinformatievelden',
+          'Servicebeschrijvingsgebieden',
+          'Bedrijfsbranding integratie',
+          'Meerdere kaartformaten',
+          'Klantenservice thema\'s',
+          'Vervaldatum functies',
+          'Professionele kaartontwerpen',
+        ],
+      },
+      membershipCardGenerator: {
+        name: 'Lidmaatschapkaart Generator',
+        description: 'Maak lidmaatschapkaarten voor clubs, organisaties, sportscholen en bedrijven. Ontwerp professionele lidmaatschapkaarten met lidinformatie en voordelen.',
+        features: [
+          'Club en organisatie sjablonen',
+          'Lidinformatievelden',
+          'Lidvoordelen lijsten',
+          'Barcode en ID integratie',
+          'Vervaldatum functies',
+          'Professionele kaartontwerpen',
+        ],
+      },
+      colorTone: {
+        name: 'Kleurenpalet Generator',
+        description: 'Extraheer mooie kleurenpaletten uit afbeeldingen of genereer nieuwe kleurencombinaties voor je ontwerpen.',
+        features: [
+          'Extraheer kleuren uit afbeeldingen',
+          'Genereer kleurenpaletten',
+          'Kleurcode export (HEX, RGB)',
+          'Bewaar en deel paletten',
+          'Ontwerpinspiratie',
+        ],
+      },
+      redEnvelope: {
+        name: 'Rode Enveloppe Omslag Generator',
+        description: 'Ontwerp aangepaste rode enveloppe omslagen voor speciale gelegenheden. Maak unieke en feestelijke digitale rode enveloppen.',
+        features: [
+          'Aangepaste rode enveloppe sjablonen',
+          'Feestelijke ontwerpelementen',
+          'Foto-integratie',
+          'Tekst aanpassing',
+          'Digitale deelformaten',
+        ],
+      },
     },
   },
 }
@@ -3145,11 +3580,17 @@ const de = {
     about: 'Über uns',
     blog: 'Blog',
     slogan: 'Einfache Bildtools',
+    theme: {
+      light: 'Hellmodus',
+      dark: 'Dunkelmodus',
+      auto: 'Automatisch',
+    },
   },
   hero: {
     title: 'Willkommen bei MemeJPG',
     subtitle: 'Bewältigen Sie alle Ihre Bildbearbeitungsanforderungen',
     exploreTools: 'Tools Erkunden',
+    newApp: 'Neu: Mac App Verfügbar',
   },
   tools: {
     sorryCard: {
@@ -3205,8 +3646,56 @@ const de = {
       description:
         'Intelligente Text-Verschleierung zur Generierung erkennungsresistenter Bilder für Private Domain Traffic Konversion. Erstellen Sie ansprechende Visuals, die Inhaltsfilter umgehen.',
     },
+    businessCardGenerator: {
+      name: 'Visitenkarten-Generator',
+      description:
+        'Erstellen Sie professionelle Visitenkarten mit anpassbaren Vorlagen und Designs. Generieren Sie hochwertige Visitenkarten für Networking und geschäftliche Zwecke.',
+    },
+    qrCodeGenerator: {
+      name: 'QR-Code-Generator',
+      description:
+        'Generieren Sie QR-Codes für verschiedene Zwecke, einschließlich URLs, Text, Kontaktinformationen und mehr. Erstellen Sie anpassbare QR-Codes für geschäftliche und private Zwecke.',
+    },
+    bookmarkGenerator: {
+      name: 'Lesezeichen-Generator',
+      description:
+        'Erstellen Sie schöne Lesezeichen zum Lesen und Organisieren. Entwerfen Sie personalisierte Lesezeichen mit benutzerdefiniertem Text, Bildern und Layouts.',
+    },
+    invitationGenerator: {
+      name: 'Einladungs-Generator',
+      description:
+        'Generieren Sie elegante Einladungen für Veranstaltungen, Partys und besondere Anlässe. Erstellen Sie professionelle Einladungen mit anpassbaren Vorlagen.',
+    },
+    giftCardGenerator: {
+      name: 'Geschenkkarten-Generator',
+      description:
+        'Erstellen Sie ansprechende Geschenkkarten für Unternehmen und den privaten Gebrauch. Entwerfen Sie benutzerdefinierte Geschenkkarten mit verschiedenen Themen und Werten.',
+    },
+    serviceCardGenerator: {
+      name: 'Servicekarten-Generator',
+      description:
+        'Generieren Sie professionelle Servicekarten für After-Sales-Support und Kundenservice. Erstellen Sie informative Servicekarten mit Kontaktdaten.',
+    },
+    membershipCardGenerator: {
+      name: 'Mitgliedskarten-Generator',
+      description:
+        'Erstellen Sie Mitgliedskarten für Clubs, Organisationen und Unternehmen. Entwerfen Sie professionelle Mitgliedskarten mit Mitgliedsinformationen.',
+    },
+    colorTone: {
+      name: 'Farbton-Generator',
+      description: 'Extrahieren Sie schöne Farbpaletten aus Bildern oder generieren Sie neue Farbkombinationen für Ihre Designs.',
+    },
+    redEnvelope: {
+      name: 'Rotes Umschlag-Deckblatt-Generator',
+      description: 'Entwerfen Sie benutzerdefinierte rote Umschlag-Deckblätter für besondere Anlässe. Erstellen Sie einzigartige und festliche digitale rote Umschläge.',
+    },
     tryNow: 'Jetzt Ausprobieren',
     comingSoon: 'Demnächst',
+    launchTool: 'Tool Starten',
+    toolsPage: {
+      title: 'Online-Tools',
+      subtitle: 'Erkunden Sie unsere komplette Suite kostenloser Online-Bildtools.',
+    },
   },
   features: {
     title: 'Warum MemeJPG wählen?',
@@ -3228,6 +3717,45 @@ const de = {
   },
   footer: {
     copyright: 'MemeJPG - Bewältigen Sie alle Ihre Bildbearbeitungsanforderungen.',
+    friendlyLinks: 'Freundliche Links',
+  },
+  download: {
+    title: 'MemeJPG für Mac',
+    chip: {
+      silicon: 'Apple Silicon (M1/M2/M3)',
+      intel: 'Intel Chip',
+    },
+    button: {
+      dmg: '.dmg Herunterladen',
+    },
+    designedFor: 'Entworfen für macOS',
+    requires: 'Erfordert macOS 11.0 oder höher.',
+    otherPlatforms: 'Suchen Sie nach anderen Plattformen?',
+    comingSoon: 'Demnächst',
+    history: 'Vorherige Versionen',
+    loading: 'Version wird geladen...',
+    latest: 'Neueste',
+    backToDownload: 'Zurück zum Download',
+    versionHistory: 'Versionsverlauf',
+    versionHistorySubtitle: 'Laden Sie vorherige Versionen von MemeJPG für Mac herunter.',
+    unableToLoad: 'Versionen können nicht geladen werden',
+    retry: 'Wiederholen',
+    noVersionsFound: 'Keine Versionen gefunden',
+    version: 'Version',
+    releasedOn: 'Veröffentlicht am',
+    appleSilicon: 'Apple Silicon',
+    intel: 'Intel',
+    universal: 'Universal',
+    unknownDate: 'Unbekanntes Datum',
+  },
+  home: {
+    heroTitle: 'Meistern Sie Ihre Bilder mit',
+    heroTitleHighlight: 'MemeJPG Tools',
+    heroSubtitleFallback: 'Online-Bildtools für alle. Größe ändern, komprimieren, Hintergründe entfernen und mehr—sofort in Ihrem Browser.',
+    freeOnlineTools: 'Kostenlose Online-Tools',
+    downloadForMac: 'Für Mac Herunterladen',
+    ourTools: 'Unsere Tools',
+    professionalTools: 'Professionelle Tools, völlig kostenlos.',
   },
   auth: {
     email: 'E-Mail',
@@ -3267,6 +3795,296 @@ const de = {
       passwordMinLength: 'Passwort muss mindestens 6 Zeichen haben',
       confirmPasswordRequired: 'Bitte bestätigen Sie Ihr Passwort',
       passwordMismatch: 'Passwörter stimmen nicht überein',
+      turnstileRequired: 'Bitte vervollständigen Sie die Sicherheitsüberprüfung',
+    },
+    forgotPassword: {
+      title: 'Passwort Zurücksetzen',
+      subtitle: 'Geben Sie Ihre E-Mail-Adresse ein, um einen Link zum Zurücksetzen des Passworts zu erhalten.',
+      submit: 'Zurücksetzungs-Link Senden',
+      success: 'Wenn ein Konto mit dieser E-Mail-Adresse existiert, erhalten Sie einen Link zum Zurücksetzen des Passworts.',
+      error: 'Fehler beim Senden des Zurücksetzungs-Links. Bitte versuchen Sie es erneut.',
+      backToLogin: 'Zurück zur Anmeldung',
+    },
+  },
+  about: {
+    title: 'Über MemeJPG',
+    subtitle:
+      'Ihr One-Stop-Ziel für alle Bildbearbeitungsanforderungen. Wir bieten leistungsstarke, kostenlose und datenschutzorientierte Tools, die vollständig in Ihrem Browser funktionieren.',
+    mission: {
+      title: 'Unsere Mission',
+      description1:
+        'Bei MemeJPG glauben wir, dass leistungsstarke Bildbearbeitungstools für jeden zugänglich sein sollten. Unsere Mission ist es, hochwertige, browserbasierte Bildverarbeitungstools bereitzustellen, die Ihre Privatsphäre respektieren und keine Downloads oder Abonnements erfordern.',
+      description2:
+        'Egal, ob Sie Memes erstellen, Bilder für das Web optimieren oder nur schnelle Bildbearbeitungen benötigen, wir haben Sie mit unserer Suite benutzerfreundlicher Tools abgedeckt.',
+      tagline: 'Einfach. Schnell. Sicher.',
+    },
+    tools: {
+      title: 'Unsere Tools',
+      tryNow: 'Jetzt Ausprobieren',
+      available: 'Verfügbar',
+      comingSoon: 'Demnächst',
+      features: 'Funktionen:',
+    },
+    values: {
+      title: 'Warum Wir Anders Sind',
+      privacy: {
+        title: 'Datenschutz Zuerst',
+        description:
+          'Alle Bildverarbeitung erfolgt lokal in Ihrem Browser. Ihre Bilder verlassen niemals Ihr Gerät.',
+      },
+      free: {
+        title: 'Immer Kostenlos',
+        description:
+          'Keine Abonnements, keine versteckten Gebühren, keine Grenzen. Alle unsere Tools sind völlig kostenlos zu verwenden.',
+      },
+      noInstall: {
+        title: 'Keine Installation',
+        description:
+          'Browserbasierte Tools bedeuten keine Downloads, keine Installationen und keine Systemanforderungen.',
+      },
+    },
+    contact: {
+      title: 'Kontaktieren Sie Uns',
+      description: 'Haben Sie Fragen, Vorschläge oder möchten Sie beitragen? Wir würden gerne von Ihnen hören!',
+      github: 'GitHub',
+      email: 'E-Mail An Uns',
+      twitter: 'Twitter',
+    },
+    toolsDetail: {
+      backgroundRemover: {
+        name: 'Hintergrund-Entferner',
+        description: 'Entfernen Sie automatisch Hintergründe von mehreren Bildern in Stapeln mit fortschrittlicher KI-Technologie.',
+        features: [
+          'Stapelverarbeitung für mehrere Bilder',
+          'KI-gestützte Hintergrundentfernung',
+          'Hochwertige transparente PNG-Ausgabe',
+          'Unterstützung für verschiedene Bildformate',
+          'Keine manuelle Bearbeitung erforderlich',
+        ],
+      },
+      fontCompressor: {
+        name: 'Schriftart-Kompressor',
+        description: 'Optimieren Sie Schriftart-Dateigrößen für schnellere Web-Ladezeiten bei gleichzeitiger Beibehaltung der Textqualität und Lesbarkeit.',
+        features: [
+          'Erhebliche Dateigrößenreduzierung',
+          'Beibehaltung der Schriftqualität und Lesbarkeit',
+          'Unterstützung für mehrere Schriftformate',
+          'Web-Performance-Optimierung',
+          'Stapel-Schriftverarbeitung',
+        ],
+      },
+      imageRenamer: {
+        name: 'Bild-Umbenenner',
+        description: 'Benennen Sie mehrere Bilder gleichzeitig effizient mit anpassbaren Benennungsmustern und Regeln um.',
+        features: [
+          'Stapel-Umbenennung für mehrere Dateien',
+          'Anpassbare Benennungsmuster',
+          'Präfix- und Suffix-Optionen',
+          'Sequenzielle Nummerierung',
+          'Vorschau vor dem Anwenden von Änderungen',
+        ],
+      },
+      imageResizer: {
+        name: 'Bildgrößen-Änderer und Zuschneider',
+        description: 'Ändern Sie die Größe und schneiden Sie mehrere Bilder auf spezifische Abmessungen zu, während Qualität und Seitenverhältnisse beibehalten werden.',
+        features: [
+          'Stapel-Größenänderung und Zuschneiden',
+          'Benutzerdefinierte Abmessungseinstellungen',
+          'Seitenverhältnis-Erhaltung',
+          'Mehrere Ausgabeformate',
+          'Qualitätsoptimierung',
+        ],
+      },
+      imageCompressor: {
+        name: 'Bild-Kompressor',
+        description: 'Komprimieren Sie mehrere Bilder gleichzeitig, um Dateigrößen zu reduzieren, ohne die visuelle Qualität zu beeinträchtigen.',
+        features: [
+          'Stapel-Komprimierungsverarbeitung',
+          'Verlustfreie und verlustbehaftete Optionen',
+          'Erhebliche Größenreduzierung',
+          'Qualitätserhaltung',
+          'Unterstützung für mehrere Formate',
+        ],
+      },
+      icoConverter: {
+        name: 'ICO-Konverter',
+        description: 'Konvertieren Sie Bilder in das ICO-Format zur Erstellung von Favicons und Windows-Symbolen mit mehreren Größenvarianten.',
+        features: [
+          'Generierung mehrerer ICO-Größen',
+          'Unterstützung für Favicon-Erstellung',
+          'Hochwertige Konvertierung',
+          'Windows-Symbol-Kompatibilität',
+          'Stapelverarbeitungsfähigkeit',
+        ],
+      },
+      imageBeautifier: {
+        name: 'Bild-Verschönerer',
+        description: 'Verbessern und verschönern Sie mehrere Bilder mit fortschrittlichen KI-Filtern und Verbesserungsalgorithmen.',
+        features: [
+          'KI-gestützte Bildverbesserung',
+          'Stapel-Verschönerungsverarbeitung',
+          'Mehrere Filteroptionen',
+          'Farbkorrektur und Optimierung',
+          'Automatische Qualitätsverbesserung',
+          'Helligkeits- und Kontrastanpassung',
+        ],
+      },
+      privateDomainTrafficGenerator: {
+        name: 'Private Domain Traffic Bild-Generator',
+        description: 'Intelligente Text-Verschleierungstechnologie zur Generierung erkennungsresistenter Bilder für Private Domain Traffic-Konvertierung. Erstellen Sie ansprechende Visuals, die Inhaltsfilter umgehen.',
+        features: [
+          'Intelligente Text-Verschleierungsalgorithmen',
+          'Erkennungsresistente Bildgenerierung',
+          'Inhaltsfilter-Umgehungstechnologie',
+          'Private Domain Traffic-Optimierung',
+          'Konvertierungsorientiertes visuelles Design',
+          'Anti-Erkennungs-Mustergenerierung',
+        ],
+      },
+      businessCardGenerator: {
+        name: 'Visitenkarten-Generator',
+        description: 'Erstellen Sie professionelle Visitenkarten mit anpassbaren Vorlagen und Designs. Perfekt für Networking, Geschäftstreffen und professionelles Branding.',
+        features: [
+          'Professionelle Visitenkarten-Vorlagen',
+          'Anpassbare Kontaktinformationsfelder',
+          'Mehrere Design-Themen und Farben',
+          'Hochwertige druckfertige Ausgabe',
+          'QR-Code-Integration für digitale Karten',
+          'Sofortige Vorschau und Download',
+        ],
+      },
+      sorryCard: {
+        name: 'Entschuldigungskarten-Generator',
+        description: 'Erstellen Sie aufrichtige Entschuldigungskarten für persönliche und berufliche Situationen. Drücken Sie aufrichtige Reue mit wunderschön gestalteten Karten aus.',
+        features: [
+          'Aufrichtige Entschuldigungskarten-Vorlagen',
+          'Anpassbare Entschuldigungsnachrichten',
+          'Persönliche und berufliche Themen',
+          'Emotionale Designelemente',
+          'Mehrere Kartenformate verfügbar',
+          'Einfache Personalisierungsoptionen',
+        ],
+      },
+      greetingCard: {
+        name: 'Grußkarten-Generator',
+        description: 'Generieren Sie personalisierte Grußkarten für Feiertage, Feiern und besondere Anlässe. Erstellen Sie unvergessliche Karten mit benutzerdefinierten Nachrichten und Designs.',
+        features: [
+          'Feiertags- und saisonale Kartenvorlagen',
+          'Anpassbare Grußnachrichten',
+          'Festliche Designelemente',
+          'Mehrere Anlasskategorien',
+          'Foto-Integrationsfähigkeiten',
+          'Druck- und digitale Freigabeoptionen',
+        ],
+      },
+      birthdayCard: {
+        name: 'Geburtstagskarten-Generator',
+        description: 'Entwerfen Sie lustige und personalisierte Geburtstagskarten für Freunde, Familie und Kollegen. Erstellen Sie einzigartige Geburtstagswünsche mit benutzerdefinierten Designs.',
+        features: [
+          'Altersgerechte Geburtstagsthemen',
+          'Anpassbare Geburtstagsnachrichten',
+          'Lustige und bunte Designelemente',
+          'Foto-Upload und Integration',
+          'Mehrere Kartengrößen-Optionen',
+          'Sofortiger Download und Freigabe',
+        ],
+      },
+      qrCodeGenerator: {
+        name: 'QR-Code-Generator',
+        description: 'Generieren Sie QR-Codes für verschiedene Zwecke, einschließlich URLs, Text, Kontaktinformationen, WiFi-Anmeldedaten und mehr. Erstellen Sie scannbare Codes für moderne digitale Interaktionen.',
+        features: [
+          'Mehrere QR-Code-Datentypen',
+          'URL-, Text- und Kontakt-QR-Codes',
+          'WiFi- und Social-Media-QR-Codes',
+          'Anpassbares Design und Farben',
+          'Hochauflösende Ausgabeformate',
+          'Stapel-QR-Code-Generierung',
+        ],
+      },
+      bookmarkGenerator: {
+        name: 'Lesezeichen-Generator',
+        description: 'Erstellen Sie schöne Lesezeichen für Leseliebhaber und Studenten. Entwerfen Sie personalisierte Lesezeichen mit Zitaten, Bildern und benutzerdefinierten Layouts.',
+        features: [
+          'Bildungs- und literarische Themen',
+          'Anpassbare Lesezeichen-Designs',
+          'Zitat- und Bildintegration',
+          'Mehrere Lesezeichen-Größen',
+          'Druckfertige PDF-Ausgabe',
+          'Laminierfreundliche Formate',
+        ],
+      },
+      invitationGenerator: {
+        name: 'Einladungs-Generator',
+        description: 'Generieren Sie elegante Einladungen für Veranstaltungen, Partys, Hochzeiten und besondere Anlässe. Erstellen Sie professionelle Einladungen mit anpassbaren Vorlagen.',
+        features: [
+          'Veranstaltungsspezifische Einladungsvorlagen',
+          'Hochzeits- und Party-Designs',
+          'RSVP-Informationsintegration',
+          'Datum- und Zeit-Anpassung',
+          'Mehrere Einladungsformate',
+          'Digitale und druckfertige Optionen',
+        ],
+      },
+      giftCardGenerator: {
+        name: 'Geschenkkarten-Generator',
+        description: 'Erstellen Sie ansprechende Geschenkkarten für Unternehmen, besondere Anlässe und persönliche Geschenke. Entwerfen Sie benutzerdefinierte Geschenkkarten mit verschiedenen Themen und Werten.',
+        features: [
+          'Geschäftliche und persönliche Geschenkkarten',
+          'Mehrere Wertoptionen',
+          'Saisonale und thematische Designs',
+          'Sicherheitsfunktionen und Codes',
+          'Barcode- und QR-Code-Integration',
+          'Professionelle Branding-Optionen',
+        ],
+      },
+      serviceCardGenerator: {
+        name: 'Servicekarten-Generator',
+        description: 'Generieren Sie professionelle Servicekarten für After-Sales-Support, Kundenservice und Geschäftskommunikation. Erstellen Sie informative Karten mit Kontaktdaten.',
+        features: [
+          'Professionelle Servicekarten-Vorlagen',
+          'Kontaktinformationsfelder',
+          'Servicebeschreibungsbereiche',
+          'Unternehmens-Branding-Integration',
+          'Mehrere Kartenformate',
+          'Kundensupport-Themen',
+          'Ablaufdatum-Funktionen',
+          'Professionelle Karten-Designs',
+        ],
+      },
+      membershipCardGenerator: {
+        name: 'Mitgliedskarten-Generator',
+        description: 'Erstellen Sie Mitgliedskarten für Clubs, Organisationen, Fitnessstudios und Unternehmen. Entwerfen Sie professionelle Mitgliedskarten mit Mitgliedsinformationen und Vorteilen.',
+        features: [
+          'Club- und Organisationsvorlagen',
+          'Mitgliedsinformationsfelder',
+          'Mitgliedsvorteilslisten',
+          'Barcode- und ID-Integration',
+          'Ablaufdatum-Funktionen',
+          'Professionelle Karten-Designs',
+        ],
+      },
+      colorTone: {
+        name: 'Farbton-Generator',
+        description: 'Extrahieren Sie schöne Farbpaletten aus Bildern oder generieren Sie neue Farbkombinationen für Ihre Designs.',
+        features: [
+          'Farben aus Bildern extrahieren',
+          'Farbpaletten generieren',
+          'Farbcode-Export (HEX, RGB)',
+          'Paletten speichern und teilen',
+          'Design-Inspiration',
+        ],
+      },
+      redEnvelope: {
+        name: 'Rotes Umschlag-Deckblatt-Generator',
+        description: 'Entwerfen Sie benutzerdefinierte rote Umschlag-Deckblätter für besondere Anlässe. Erstellen Sie einzigartige und festliche digitale rote Umschläge.',
+        features: [
+          'Benutzerdefinierte rote Umschlag-Vorlagen',
+          'Festliche Designelemente',
+          'Foto-Integration',
+          'Text-Anpassung',
+          'Digitale Freigabeformate',
+        ],
+      },
     },
   },
 }
