@@ -1,8 +1,7 @@
 export async function onRequest(context) {
-    const { request, env } = context;
-
-    // R2 public domain for fallback redirects
-    const R2_PUBLIC_DOMAIN = "https://download.memejpg.com";
+    const { request } = context;
+    const GITHUB_REPO = "yyh0808/memejpg-app";
+    const GITHUB_API_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases`;
 
     // Basic security: Check Referer to prevent hotlinking
     const referer = request.headers.get("Referer");
@@ -18,90 +17,85 @@ export async function onRequest(context) {
     const version = url.searchParams.get("version");
 
     try {
-        // Check if R2 binding is available
-        if (!env.R2_BUCKET) {
-            // R2 not bound - redirect to public R2 domain with version if specified
-            if (version) {
-                const filename = `MemeJPG-${version}-${arch}.dmg`;
-                return Response.redirect(`${R2_PUBLIC_DOMAIN}/${filename}`, 302);
+        // Fetch releases from GitHub API
+        const response = await fetch(GITHUB_API_URL, {
+            headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'User-Agent': 'MemeJPG-Website'
             }
-            // Without version and without R2 binding, we can't determine latest
-            return new Response(JSON.stringify({
-                error: "R2_BUCKET binding not configured. Please check Cloudflare Pages settings."
-            }), {
-                status: 500,
-                headers: { "Content-Type": "application/json" }
-            });
-        }
-
-        // List objects in R2 bucket
-        const listed = await env.R2_BUCKET.list();
-
-        // Filter by architecture
-        // Naming convention: MemeJPG-{Version}-{arch}.dmg
-        const files = listed.objects.filter(o => {
-            const k = o.key.toLowerCase();
-            if (!k.endsWith('.dmg')) return false;
-
-            if (arch === 'arm64') {
-                return k.includes('arm64') || k.includes('applesilicon');
-            } else if (arch === 'x64') {
-                return k.includes('x64') || k.includes('intel');
-            }
-            return false;
         });
 
-        if (files.length === 0) {
-            return new Response(JSON.stringify({
-                error: `No ${arch} DMG files found in R2 bucket`
-            }), {
-                status: 404,
-                headers: { "Content-Type": "application/json" }
-            });
+        if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
         }
 
-        // Sort by semantic version (extract version from filename)
-        files.sort((a, b) => {
-            const versionA = a.key.match(/(\d+\.\d+\.\d+)/)?.[1] || "0.0.0";
-            const versionB = b.key.match(/(\d+\.\d+\.\d+)/)?.[1] || "0.0.0";
-            return versionB.localeCompare(versionA, undefined, { numeric: true, sensitivity: 'base' });
-        });
+        const releases = await response.json();
 
-        let objectKey = null;
-
+        // Find the target release
+        let targetRelease = null;
         if (version) {
             // Find specific version
-            const vFile = files.find(f => f.key.includes(version));
-            if (vFile) {
-                objectKey = vFile.key;
-            } else {
-                return new Response(JSON.stringify({
-                    error: `Version ${version} not found for ${arch}`
-                }), {
-                    status: 404,
-                    headers: { "Content-Type": "application/json" }
-                });
-            }
+            targetRelease = releases.find(r => {
+                const versionMatch = r.tag_name.match(/v?(\d+\.\d+\.\d+)/);
+                return versionMatch && versionMatch[1] === version;
+            });
         } else {
-            // Get latest version (first after sorting)
-            objectKey = files[0].key;
+            // Get latest release
+            targetRelease = releases[0];
         }
 
-        // Stream file directly from R2
-        const object = await env.R2_BUCKET.get(objectKey);
-        if (!object) {
-            return new Response(JSON.stringify({ error: "File not found in R2" }), {
+        if (!targetRelease) {
+            return new Response(JSON.stringify({
+                error: version ? `Version ${version} not found` : "No releases found"
+            }), {
                 status: 404,
                 headers: { "Content-Type": "application/json" }
             });
         }
 
-        const headers = new Headers();
-        object.writeHttpMetadata(headers);
-        headers.set("etag", object.httpEtag);
-        headers.set("Content-Disposition", `attachment; filename="${objectKey}"`);
+        // Find the appropriate asset for the requested architecture
+        let downloadUrl = null;
+        for (const asset of targetRelease.assets || []) {
+            const name = asset.name.toLowerCase();
+            
+            // Skip source code archives and yml files
+            if (name.includes('source') || name.endsWith('.yml') || name.endsWith('.yaml')) {
+                continue;
+            }
 
-        return new Response(object.body, { headers });
+            // Prefer DMG files, but also accept ZIP
+            const isDmg = name.endsWith('.dmg');
+            const isZip = name.endsWith('.zip');
+            
+            if (!isDmg && !isZip) continue;
+
+            let matchesArch = false;
+            if (arch === 'arm64') {
+                matchesArch = name.includes('arm64') || name.includes('applesilicon') || name.includes('m1');
+            } else if (arch === 'x64') {
+                matchesArch = name.includes('x64') || name.includes('intel');
+            }
+
+            if (matchesArch) {
+                // Prefer DMG over ZIP
+                if (isDmg || (!downloadUrl && isZip)) {
+                    downloadUrl = asset.browser_download_url;
+                    if (isDmg) break; // Found DMG, no need to continue
+                }
+            }
+        }
+
+        if (!downloadUrl) {
+            return new Response(JSON.stringify({
+                error: `No ${arch} download file found for ${version || 'latest'} release`
+            }), {
+                status: 404,
+                headers: { "Content-Type": "application/json" }
+            });
+        }
+
+        // Redirect to GitHub download URL
+        return Response.redirect(downloadUrl, 302);
 
     } catch (e) {
         return new Response(JSON.stringify({ error: e.message }), {

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
-const downloadUrl = '/api/download' // Points to Worker API via Pages Function
+const downloadUrl = '/api/download-api' // Points to Pages Function that redirects to GitHub
 const latestVersion = ref<string | null>(null)
+const latestRelease = ref<any>(null)
 const loadingVersion = ref(true)
 
 const features = ref([
@@ -23,13 +24,27 @@ const features = ref([
   'Automatic updates'
 ])
 
+// Compute download URLs from latest release
+const arm64DownloadUrl = computed(() => {
+  if (!latestRelease.value) return `${downloadUrl}?arch=arm64`
+  const arm64File = latestRelease.value.files.find((f: any) => f.arch === 'arm64')
+  return arm64File ? arm64File.url : `${downloadUrl}?arch=arm64`
+})
+
+const x64DownloadUrl = computed(() => {
+  if (!latestRelease.value) return `${downloadUrl}?arch=x64`
+  const x64File = latestRelease.value.files.find((f: any) => f.arch === 'x64')
+  return x64File ? x64File.url : `${downloadUrl}?arch=x64`
+})
+
 onMounted(async () => {
     try {
-        const res = await fetch('/api/download/versions')
+        const res = await fetch('/api/versions')
         if (res.ok) {
             const data = await res.json()
-            if (data.latest && data.latest.version) {
+            if (data.latest) {
                  latestVersion.value = data.latest.version
+                 latestRelease.value = data.latest
             }
         }
     } catch (e) {
@@ -76,7 +91,7 @@ onMounted(async () => {
       <v-row class="gap-4 justify-center mb-16">
         <!-- Apple Silicon Card -->
         <v-col cols="12" md="5" lg="4">
-          <a :href="`${downloadUrl}?arch=arm64`" class="text-decoration-none">
+          <a :href="arm64DownloadUrl" class="text-decoration-none" target="_blank" rel="noopener noreferrer">
             <v-card class="glass-card pa-6 text-center h-100 d-flex flex-column align-center" variant="flat" hover>
                   <div class="mb-4">
                      <v-img src="/logo.svg" width="64" height="64" class="mx-auto"></v-img>
@@ -94,7 +109,7 @@ onMounted(async () => {
 
         <!-- Intel Card -->
         <v-col cols="12" md="5" lg="4">
-           <a :href="`${downloadUrl}?arch=x64`" class="text-decoration-none">
+           <a :href="x64DownloadUrl" class="text-decoration-none" target="_blank" rel="noopener noreferrer">
             <v-card class="glass-card pa-6 text-center h-100 d-flex flex-column align-center" variant="flat" hover>
                   <div class="mb-4">
                     <v-img src="/logo.svg" width="64" height="64" class="mx-auto grayscale"></v-img>

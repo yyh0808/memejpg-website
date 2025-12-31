@@ -45,11 +45,13 @@
               <div class="d-flex flex-column flex-sm-row align-center gap-2">
                  <div v-for="file in version.files" :key="file.arch" class="ma-1">
                     <v-btn
-                      :href="`/download-api?version=${version.version}&arch=${file.arch}`" 
+                      :href="file.url" 
                       variant="outlined"
                       size="small"
                       color="primary"
                       prepend-icon="mdi-download"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       {{ formatArch(file.arch) }}
                     </v-btn>

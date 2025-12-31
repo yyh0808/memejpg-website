@@ -1,52 +1,67 @@
 export async function onRequest(context) {
-    const { env } = context;
-
-    if (!env.R2_BUCKET) {
-        return new Response(JSON.stringify({ error: "R2_BUCKET not configured" }), {
-            status: 500,
-            headers: { "Content-Type": "application/json" }
-        });
-    }
+    const GITHUB_REPO = "yyh0808/memejpg-app";
+    const GITHUB_API_URL = `https://api.github.com/repos/${GITHUB_REPO}/releases`;
 
     try {
-        // List objects in the bucket
-        const listed = await env.R2_BUCKET.list();
+        // Fetch releases from GitHub API
+        const response = await fetch(GITHUB_API_URL, {
+            headers: {
+                'Accept': 'application/vnd.github.v3+json',
+                'User-Agent': 'MemeJPG-Website'
+            }
+        });
 
-        // Parse versions from filenames
-        // Expected format: MemeJPG-{Version}-{Arch}.dmg or similar
-        // We will regroup them by version.
+        if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status} ${response.statusText}`);
+        }
 
+        const releases = await response.json();
+
+        // Parse releases into our format
         const versions = {};
 
-        for (const object of listed.objects) {
-            const key = object.key;
-            // Simple regex to match semantic versions like 1.0.0, 1.2.3-beta, etc.
-            // Assumption: Filename contains version, e.g., "MemeJPG-1.0.1-arm64.dmg"
-            const versionMatch = key.match(/(\d+\.\d+\.\d+)/);
+        for (const release of releases) {
+            // Extract version from tag_name (e.g., "v0.0.2" -> "0.0.2")
+            const versionMatch = release.tag_name.match(/v?(\d+\.\d+\.\d+)/);
+            if (!versionMatch) continue;
 
-            if (versionMatch) {
-                const version = versionMatch[1];
-                if (!versions[version]) {
-                    versions[version] = {
-                        version: version,
-                        files: [],
-                        date: object.uploaded // Use upload date of the first file found
-                    };
+            const version = versionMatch[1];
+            const files = [];
+
+            // Process assets to find DMG files for different architectures
+            for (const asset of release.assets || []) {
+                const name = asset.name.toLowerCase();
+                
+                // Skip source code archives and yml files
+                if (name.includes('source') || name.endsWith('.yml') || name.endsWith('.yaml')) {
+                    continue;
                 }
 
-                let arch = 'unknown';
-                if (key.includes('arm64') || key.includes('AppleSilicon') || key.includes('m1')) {
+                let arch = null;
+                if (name.includes('arm64') || name.includes('applesilicon') || name.includes('m1')) {
                     arch = 'arm64';
-                } else if (key.includes('x64') || key.includes('Intel')) {
+                } else if (name.includes('x64') || name.includes('intel')) {
                     arch = 'x64';
                 }
 
-                versions[version].files.push({
-                    key: key,
-                    size: object.size,
-                    arch: arch,
-                    url: `/download-api?version=${version}&arch=${arch}`
-                });
+                // Only include DMG and ZIP files
+                if (arch && (name.endsWith('.dmg') || name.endsWith('.zip'))) {
+                    files.push({
+                        key: asset.name,
+                        size: asset.size,
+                        arch: arch,
+                        url: asset.browser_download_url
+                    });
+                }
+            }
+
+            // Only add version if it has at least one valid file
+            if (files.length > 0) {
+                versions[version] = {
+                    version: version,
+                    files: files,
+                    date: release.published_at || release.created_at
+                };
             }
         }
 
@@ -62,7 +77,10 @@ export async function onRequest(context) {
             latest: latest,
             versions: versionList
         }), {
-            headers: { "Content-Type": "application/json" }
+            headers: { 
+                "Content-Type": "application/json",
+                "Cache-Control": "public, max-age=300" // Cache for 5 minutes
+            }
         });
 
     } catch (e) {
