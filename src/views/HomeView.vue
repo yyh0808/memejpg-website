@@ -11,12 +11,12 @@
              </div>
             
             <h1 class="text-h3 text-md-h2 font-weight-black text-high-emphasis mb-4 font-modern lh-tight">
-              Master Your Images with
-              <div class="text-gradient">MemeJPG Tools</div>
+              {{ $t('home.heroTitle') }}
+              <div class="text-gradient">{{ $t('home.heroTitleHighlight') }}</div>
             </h1>
 
             <p class="text-h6 text-medium-emphasis mb-8 font-weight-regular" style="max-width: 600px; margin: 0 auto;">
-              {{ $t('hero.subtitle') || 'Online image tools for everyone. Resize, compress, remove backgrounds, and more—instantly in your browser.' }}
+              {{ $t('hero.subtitle') || $t('home.heroSubtitleFallback') }}
             </p>
 
             <div class="d-flex justify-center flex-wrap" style="gap: 16px;">
@@ -28,7 +28,7 @@
                 height="54"
                 to="/tools"
               >
-                Free OnlineTools
+                {{ $t('home.freeOnlineTools') }}
               </v-btn>
               
               <v-btn
@@ -41,7 +41,7 @@
                 prepend-icon="mdi-apple"
                 style="border-color: #e5e7eb;"
               >
-                Download for Mac
+                {{ $t('home.downloadForMac') }}
               </v-btn>
             </div>
             
@@ -58,9 +58,9 @@
     <v-container id="tools-section" class="py-16">
       <v-row>
         <v-col cols="12" class="text-center mb-8">
-           <h2 class="text-subtitle-1 font-weight-bold text-primary text-uppercase mb-2 font-modern tracking-wide">Our Tools</h2>
+           <h2 class="text-subtitle-1 font-weight-bold text-primary text-uppercase mb-2 font-modern tracking-wide">{{ $t('home.ourTools') }}</h2>
            <h3 class="text-h4 font-weight-bold text-high-emphasis font-modern mb-4">{{ $t('tools.title') }}</h3>
-           <p class="text-body-1 text-medium-emphasis">Professional grade tools, completely free.</p>
+           <p class="text-body-1 text-medium-emphasis">{{ $t('home.professionalTools') }}</p>
         </v-col>
 
         <v-col v-for="tool in tools" :key="tool.id" cols="12" sm="6" md="4" lg="3">
@@ -81,7 +81,7 @@
                 </p>
                 
                 <div class="d-flex align-center text-primary text-caption font-weight-bold">
-                   <span class="mr-1">{{ tool.available ? 'Launch Tool' : 'Coming Soon' }}</span>
+                   <span class="mr-1">{{ tool.available ? $t('tools.launchTool') : $t('tools.comingSoon') }}</span>
                    <v-icon size="small" icon="mdi-arrow-right"></v-icon>
                 </div>
             </v-card>

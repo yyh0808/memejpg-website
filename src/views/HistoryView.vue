@@ -2,10 +2,10 @@
   <v-container class="py-16">
     <div class="mb-8">
       <v-btn to="/download" variant="text" prepend-icon="mdi-arrow-left" class="mb-4">
-        Back to Download
+        {{ $t('download.backToDownload') }}
       </v-btn>
-      <h1 class="text-h3 font-weight-bold text-grey-darken-3 font-modern mb-2">Version History</h1>
-      <p class="text-subtitle-1 text-grey-darken-1">Download previous versions of MemeJPG for Mac.</p>
+      <h1 class="text-h3 font-weight-bold text-grey-darken-3 font-modern mb-2">{{ $t('download.versionHistory') }}</h1>
+      <p class="text-subtitle-1 text-grey-darken-1">{{ $t('download.versionHistorySubtitle') }}</p>
     </div>
 
     <div v-if="loading" class="d-flex justify-center py-12">
@@ -14,13 +14,13 @@
 
     <div v-else-if="error" class="text-center py-12">
       <v-icon color="error" size="48" class="mb-4">mdi-alert-circle</v-icon>
-      <p class="text-h6 text-grey-darken-2">Unable to load versions</p>
+      <p class="text-h6 text-grey-darken-2">{{ $t('download.unableToLoad') }}</p>
       <p class="text-body-2 text-grey-darken-1 mb-4">{{ error }}</p>
-      <v-btn color="primary" @click="fetchVersions">Retry</v-btn>
+      <v-btn color="primary" @click="fetchVersions">{{ $t('download.retry') }}</v-btn>
     </div>
 
     <div v-else-if="versions.length === 0" class="text-center py-12">
-      <p class="text-h6 text-grey-darken-2">No versions found</p>
+      <p class="text-h6 text-grey-darken-2">{{ $t('download.noVersionsFound') }}</p>
     </div>
 
     <v-card v-else class="border rounded-lg" variant="flat">
@@ -34,11 +34,11 @@
             </template>
 
             <v-list-item-title class="text-h6 font-weight-bold mb-1">
-              Version {{ version.version }}
+              {{ $t('download.version') }} {{ version.version }}
             </v-list-item-title>
             
             <v-list-item-subtitle>
-              Released on: {{ formatDate(version.date) }}
+              {{ $t('download.releasedOn') }} {{ formatDate(version.date) }}
             </v-list-item-subtitle>
 
             <template v-slot:append>
@@ -68,6 +68,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 interface VersionFile {
   key: string;
@@ -86,8 +87,10 @@ const versions = ref<Version[]>([])
 const loading = ref(true)
 const error = ref<string | null>(null)
 
+const { t } = useI18n()
+
 const formatDate = (dateString: string) => {
-  if (!dateString) return 'Unknown date';
+  if (!dateString) return t('download.unknownDate');
   try {
     return new Date(dateString).toLocaleDateString(undefined, {
       year: 'numeric',
@@ -100,9 +103,9 @@ const formatDate = (dateString: string) => {
 }
 
 const formatArch = (arch: string) => {
-  if (arch === 'arm64') return 'Apple Silicon';
-  if (arch === 'x64') return 'Intel';
-  return 'Universal';
+  if (arch === 'arm64') return t('download.appleSilicon');
+  if (arch === 'x64') return t('download.intel');
+  return t('download.universal');
 }
 
 const fetchVersions = async () => {

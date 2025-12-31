@@ -3,10 +3,10 @@
     <v-row class="mb-8">
       <v-col cols="12" class="text-center">
         <h1 class="text-h3 font-weight-bold text-high-emphasis font-modern mb-4">
-          Online Tools
+          {{ $t('tools.toolsPage.title') }}
         </h1>
         <p class="text-h6 text-medium-emphasis font-weight-regular max-w-lg mx-auto">
-          Explore our complete suite of free online image utilities.
+          {{ $t('tools.toolsPage.subtitle') }}
         </p>
       </v-col>
     </v-row>
@@ -30,7 +30,7 @@
             </p>
             
             <div class="d-flex align-center text-primary text-caption font-weight-bold">
-               <span class="mr-1">{{ tool.available ? 'Launch Tool' : 'Coming Soon' }}</span>
+               <span class="mr-1">{{ tool.available ? $t('tools.launchTool') : $t('tools.comingSoon') }}</span>
                <v-icon size="small" icon="mdi-arrow-right"></v-icon>
             </div>
           </v-card>
