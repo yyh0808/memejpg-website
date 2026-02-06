@@ -23,64 +23,141 @@
       <p class="text-h6 text-grey-darken-2">{{ $t('download.noVersionsFound') }}</p>
     </div>
 
-    <v-card v-else class="border rounded-lg" variant="flat">
-      <v-list lines="two">
-        <template v-for="(version, index) in versions" :key="version.version">
-          <v-list-item class="py-4">
-            <template v-slot:prepend>
-              <div class="bg-grey-lighten-4 rounded-circle pa-3 mr-4">
-                <v-icon color="primary">mdi-tag-outline</v-icon>
-              </div>
-            </template>
-
-            <v-list-item-title class="text-h6 font-weight-bold mb-1">
+    <div v-else>
+      <v-card v-for="(version, versionIndex) in versions" :key="version.version" class="mb-6 border rounded-lg" variant="flat">
+        <v-card-title class="d-flex align-center bg-grey-lighten-4 pa-4">
+          <v-icon color="primary" class="mr-3">mdi-tag-outline</v-icon>
+          <div>
+            <div class="text-h6 font-weight-bold">
               {{ $t('download.version') }} {{ version.version }}
-            </v-list-item-title>
-            
-            <v-list-item-subtitle>
+            </div>
+            <div class="text-caption text-medium-emphasis">
               {{ $t('download.releasedOn') }} {{ formatDate(version.date) }}
-            </v-list-item-subtitle>
+            </div>
+          </div>
+        </v-card-title>
 
-            <template v-slot:append>
-              <div class="d-flex flex-column flex-sm-row align-center gap-2">
-                 <div v-for="file in version.files" :key="file.arch" class="ma-1">
-                    <v-btn
-                      :href="file.url" 
-                      variant="outlined"
-                      size="small"
-                      color="primary"
-                      prepend-icon="mdi-download"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {{ formatArch(file.arch) }}
-                    </v-btn>
-                 </div>
+        <v-card-text class="pa-4">
+          <v-row>
+            <!-- Windows Downloads -->
+            <v-col v-if="groupFilesByPlatform(version.files).windows.length > 0" cols="12" md="4">
+              <div class="mb-2 d-flex align-center">
+                <v-icon :icon="getPlatformIcon('windows')" size="20" class="mr-2" color="blue"></v-icon>
+                <span class="text-subtitle-2 font-weight-bold">{{ $t('download.platforms.windows') }}</span>
               </div>
-            </template>
-          </v-list-item>
-          <v-divider v-if="index < versions.length - 1"></v-divider>
-        </template>
-      </v-list>
-    </v-card>
+              <div class="d-flex flex-column gap-2">
+                <v-btn
+                  v-for="file in groupFilesByPlatform(version.files).windows"
+                  :key="file.key"
+                  :href="file.url"
+                  variant="outlined"
+                  size="small"
+                  :color="getPlatformColor('windows')"
+                  prepend-icon="mdi-download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="justify-start"
+                >
+                  <span class="text-caption">{{ getFileLabel(file) }}</span>
+                </v-btn>
+              </div>
+            </v-col>
+
+            <!-- macOS Downloads -->
+            <v-col v-if="groupFilesByPlatform(version.files).macos.length > 0" cols="12" md="4">
+              <div class="mb-2 d-flex align-center">
+                <v-icon :icon="getPlatformIcon('macos')" size="20" class="mr-2" color="grey-darken-2"></v-icon>
+                <span class="text-subtitle-2 font-weight-bold">{{ $t('download.platforms.macos') }}</span>
+              </div>
+              <div class="d-flex flex-column gap-2">
+                <v-btn
+                  v-for="file in groupFilesByPlatform(version.files).macos"
+                  :key="file.key"
+                  :href="file.url"
+                  variant="outlined"
+                  size="small"
+                  :color="getPlatformColor('macos')"
+                  prepend-icon="mdi-download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="justify-start"
+                >
+                  <span class="text-caption">{{ getFileLabel(file) }}</span>
+                </v-btn>
+              </div>
+            </v-col>
+
+            <!-- Linux Downloads -->
+            <v-col v-if="groupFilesByPlatform(version.files).linux.length > 0" cols="12" md="4">
+              <div class="mb-2 d-flex align-center">
+                <v-icon :icon="getPlatformIcon('linux')" size="20" class="mr-2" color="orange"></v-icon>
+                <span class="text-subtitle-2 font-weight-bold">{{ $t('download.platforms.linux') }}</span>
+              </div>
+              <div class="d-flex flex-column gap-2">
+                <v-btn
+                  v-for="file in groupFilesByPlatform(version.files).linux"
+                  :key="file.key"
+                  :href="file.url"
+                  variant="outlined"
+                  size="small"
+                  :color="getPlatformColor('linux')"
+                  prepend-icon="mdi-download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="justify-start"
+                >
+                  <span class="text-caption">{{ getFileLabel(file) }}</span>
+                </v-btn>
+              </div>
+            </v-col>
+
+            <!-- Unknown/Other Downloads -->
+            <v-col v-if="groupFilesByPlatform(version.files).unknown.length > 0" cols="12" md="4">
+              <div class="mb-2 d-flex align-center">
+                <v-icon icon="mdi-download" size="20" class="mr-2" color="grey"></v-icon>
+                <span class="text-subtitle-2 font-weight-bold">Other</span>
+              </div>
+              <div class="d-flex flex-column gap-2">
+                <v-btn
+                  v-for="file in groupFilesByPlatform(version.files).unknown"
+                  :key="file.key"
+                  :href="file.url"
+                  variant="outlined"
+                  size="small"
+                  color="grey"
+                  prepend-icon="mdi-download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="justify-start"
+                >
+                  <span class="text-caption">{{ getFileLabel(file) }}</span>
+                </v-btn>
+              </div>
+            </v-col>
+          </v-row>
+        </v-card-text>
+      </v-card>
+    </div>
   </v-container>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 interface VersionFile {
-  key: string;
-  size: number;
-  arch: string;
-  url: string;
+  key: string
+  size: number
+  arch: string
+  platform?: string
+  format?: string
+  url: string
 }
 
 interface Version {
-  version: string;
-  files: VersionFile[];
-  date: string;
+  version: string
+  files: VersionFile[]
+  date: string
 }
 
 const versions = ref<Version[]>([])
@@ -89,64 +166,246 @@ const error = ref<string | null>(null)
 
 const { t } = useI18n()
 
+// Parse filename - support multiple formats for backwards compatibility
+const parseFilename = (filename: string) => {
+  // Try 5-segment format: Memejpg-1.0.44-windows-standalone-x64.exe
+  const match5 = filename.match(/^(.+?)-(\d+\.\d+\.\d+)-(\w+)-(\w+)-(\w+)\.(.+)$/)
+  if (match5) {
+    const [, , version, platform, type, arch, extension] = match5
+    return {
+      platform: platform.toLowerCase(),
+      arch: arch.toLowerCase(),
+      format: extension.toLowerCase(),
+    }
+  }
+
+  // Try 3-segment format: MemeJPG-1.0.0-arm64.dmg or MemeJPG-1.0.0-x64.dmg
+  const match3 = filename.match(/^(.+?)-(\d+\.\d+\.\d+)-(\w+)\.(.+)$/)
+  if (match3) {
+    const [, , version, arch, extension] = match3
+    const ext = extension.toLowerCase()
+
+    // Infer platform from extension
+    let platform = 'unknown'
+    if (ext === 'dmg' || ext === 'pkg') {
+      platform = 'macos'
+    } else if (ext === 'exe' || ext === 'msi') {
+      platform = 'windows'
+    } else if (ext === 'deb' || ext === 'rpm' || ext === 'appimage') {
+      platform = 'linux'
+    }
+
+    return {
+      platform,
+      arch: arch.toLowerCase(),
+      format: ext,
+    }
+  }
+
+  // Try old 2-segment format with platform in name: MemeJPG-mac-1.0.0.dmg
+  const match2 = filename.match(/^(.+?)-(mac|win|linux|windows|macos)-(\d+\.\d+\.\d+)\.(.+)$/i)
+  if (match2) {
+    const [, , platformName, version, extension] = match2
+    const ext = extension.toLowerCase()
+    let platform = platformName.toLowerCase()
+    if (platform === 'win' || platform === 'windows') platform = 'windows'
+    if (platform === 'mac' || platform === 'macos') platform = 'macos'
+
+    // Try to infer arch from filename or default to x64
+    let arch = 'x64'
+    if (filename.includes('arm64') || filename.includes('silicon')) {
+      arch = 'arm64'
+    } else if (filename.includes('intel')) {
+      arch = 'x64'
+    }
+
+    return {
+      platform,
+      arch,
+      format: ext,
+    }
+  }
+
+  // Fallback: try to infer from extension only
+  const extMatch = filename.match(/\.([^.]+)$/)
+  if (extMatch) {
+    const ext = extMatch[1].toLowerCase()
+    let platform = 'unknown'
+
+    if (ext === 'dmg' || ext === 'pkg') {
+      platform = 'macos'
+    } else if (ext === 'exe' || ext === 'msi') {
+      platform = 'windows'
+    } else if (ext === 'deb' || ext === 'rpm' || ext === 'appimage') {
+      platform = 'linux'
+    }
+
+    // Try to detect arch
+    let arch = 'x64'
+    if (filename.toLowerCase().includes('arm64') || filename.toLowerCase().includes('aarch64')) {
+      arch = 'arm64'
+    }
+
+    return {
+      platform,
+      arch,
+      format: ext,
+    }
+  }
+
+  // If nothing matched, return a default so the file is still shown
+  return {
+    platform: 'unknown',
+    arch: 'unknown',
+    format: 'unknown',
+  }
+}
+
 const formatDate = (dateString: string) => {
-  if (!dateString) return t('download.unknownDate');
+  if (!dateString) return t('download.unknownDate')
   try {
     return new Date(dateString).toLocaleDateString(undefined, {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
-    });
+    })
   } catch (e) {
-    return dateString;
+    return dateString
   }
 }
 
-const formatArch = (arch: string) => {
-  if (arch === 'arm64') return t('download.appleSilicon');
-  if (arch === 'x64') return t('download.intel');
-  return t('download.universal');
+const getFileLabel = (file: VersionFile) => {
+  const parts = []
+
+  // If we can't determine platform/arch/format, just show the filename
+  if (file.platform === 'unknown' && file.arch === 'unknown') {
+    return file.key || 'Download'
+  }
+
+  // Platform
+  if (file.platform && file.platform !== 'unknown') {
+    parts.push(file.platform.charAt(0).toUpperCase() + file.platform.slice(1))
+  }
+
+  // Architecture
+  if (file.arch && file.arch !== 'unknown') {
+    if (file.arch === 'arm64' && file.platform === 'macos') {
+      parts.push('Apple Silicon')
+    } else if (file.arch === 'x64' && file.platform === 'macos') {
+      parts.push('Intel')
+    } else {
+      parts.push(file.arch.toUpperCase())
+    }
+  }
+
+  // Format
+  if (file.format && file.format !== 'unknown') {
+    parts.push(`.${file.format.toUpperCase()}`)
+  }
+
+  // If no parts were added, show filename
+  return parts.length > 0 ? parts.join(' • ') : (file.key || 'Download')
+}
+
+const getPlatformIcon = (platform: string) => {
+  const icons: Record<string, string> = {
+    'windows': 'mdi-microsoft-windows',
+    'macos': 'mdi-apple',
+    'linux': 'mdi-linux',
+  }
+  return icons[platform?.toLowerCase()] || 'mdi-download'
+}
+
+const getPlatformColor = (platform: string) => {
+  const colors: Record<string, string> = {
+    'windows': 'blue',
+    'macos': 'grey-darken-2',
+    'linux': 'orange',
+  }
+  return colors[platform?.toLowerCase()] || 'primary'
+}
+
+// Group files by platform
+const groupFilesByPlatform = (files: VersionFile[]) => {
+  const grouped: Record<string, VersionFile[]> = {
+    windows: [],
+    macos: [],
+    linux: [],
+    unknown: [],
+  }
+
+  files.forEach(file => {
+    const platform = file.platform || 'unknown'
+    if (grouped[platform]) {
+      grouped[platform].push(file)
+    } else {
+      grouped.unknown.push(file)
+    }
+  })
+
+  return grouped
 }
 
 const fetchVersions = async () => {
   loading.value = true
   error.value = null
   try {
-    // In dev mode, fetch might fail if API is not proxied or running.
-    // We can handle local dev fallback or just fail.
     const response = await fetch('/api/versions')
     if (!response.ok) {
-        throw new Error(`API Error: ${response.statusText}`)
+      throw new Error(`API Error: ${response.statusText}`)
     }
     const data = await response.json()
-    versions.value = data.versions || [];
+
+    // Parse files and add platform/format info
+    if (data.versions) {
+      versions.value = data.versions.map((version: Version) => ({
+        ...version,
+        files: version.files.map(file => {
+          const parsed = parseFilename(file.key)
+          return {
+            ...file,
+            ...parsed,
+          }
+        }),
+      }))
+    }
   } catch (e: any) {
     console.warn("Failed to fetch versions:", e)
-    // For Demo/Dev purposes, if fetch fails (likely locally), mock data?
-    // User wants "page function to request R2". Local dev usually doesn't have R2 binding.
-    // I will show error but also a small mock for visual verification if needed, 
-    // OR just show error. Better to show error so user knows to deploy.
-    // BUT to verify UI, I'll add a mock fallback if hostname is localhost.
+
     if (window.location.hostname === 'localhost') {
-        versions.value = [
-            {
-                version: '1.2.0',
-                date: new Date().toISOString(),
-                files: [
-                    { key: 'mock-arm', size: 1000, arch: 'arm64', url: '#' },
-                    { key: 'mock-intel', size: 1000, arch: 'x64', url: '#' }
-                ]
-            },
-            {
-                version: '1.1.0',
-                date: new Date(Date.now() - 86400000 * 10).toISOString(),
-                files: [
-                     { key: 'mock-arm', size: 1000, arch: 'arm64', url: '#' }
-                ]
-            }
-        ];
+      // Mock data for testing - multiple versions with different file formats
+      versions.value = [
+        {
+          version: '1.0.44',
+          date: new Date().toISOString(),
+          files: [
+            { key: 'Memejpg-1.0.44-windows-standalone-x64.exe', size: 4050000, arch: 'x64', platform: 'windows', format: 'exe', url: '#' },
+            { key: 'Memejpg-1.0.44-windows-standalone-x64.msi', size: 5750000, arch: 'x64', platform: 'windows', format: 'msi', url: '#' },
+            { key: 'Memejpg-1.0.44-macos-standalone-arm64.dmg', size: 6380000, arch: 'arm64', platform: 'macos', format: 'dmg', url: '#' },
+            { key: 'Memejpg-1.0.44-macos-standalone-x64.dmg', size: 6630000, arch: 'x64', platform: 'macos', format: 'dmg', url: '#' },
+            { key: 'Memejpg-1.0.44-linux-standalone-x64.AppImage', size: 80000000, arch: 'x64', platform: 'linux', format: 'appimage', url: '#' },
+            { key: 'Memejpg-1.0.44-linux-standalone-x64.deb', size: 6440000, arch: 'x64', platform: 'linux', format: 'deb', url: '#' },
+            { key: 'Memejpg-1.0.44-linux-standalone-x64.rpm', size: 6440000, arch: 'x64', platform: 'linux', format: 'rpm', url: '#' },
+          ]
+        },
+        {
+          version: '1.0.30',
+          date: new Date(Date.now() - 86400000 * 7).toISOString(),
+          files: [
+            { key: 'MemeJPG-1.0.30-arm64.dmg', size: 6200000, arch: 'arm64', platform: 'macos', format: 'dmg', url: '#' },
+            { key: 'MemeJPG-1.0.30-x64.dmg', size: 6400000, arch: 'x64', platform: 'macos', format: 'dmg', url: '#' },
+          ]
+        },
+        {
+          version: '1.0.20',
+          date: new Date(Date.now() - 86400000 * 14).toISOString(),
+          files: [
+            { key: 'MemeJPG-mac-1.0.20.dmg', size: 5800000, arch: 'x64', platform: 'macos', format: 'dmg', url: '#' },
+          ]
+        },
+      ]
     } else {
-         error.value = e.message || 'Failed to load versions'
+      error.value = e.message || 'Failed to load versions'
     }
   } finally {
     loading.value = false

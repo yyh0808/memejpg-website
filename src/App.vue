@@ -155,7 +155,7 @@
             <h4 class="text-subtitle-2 font-weight-bold mb-4 text-high-emphasis">Product</h4>
             <div class="d-flex flex-column gap-2">
               <router-link to="/" class="text-body-2 text-medium-emphasis text-decoration-none hover:text-primary mb-2">Tools</router-link>
-              <router-link to="/download" class="text-body-2 text-medium-emphasis text-decoration-none hover:text-primary mb-2">Mac App</router-link>
+              <router-link to="/download" class="text-body-2 text-medium-emphasis text-decoration-none hover:text-primary mb-2">{{ $t('nav.download') }}</router-link>
               <router-link to="/pricing" class="text-body-2 text-medium-emphasis text-decoration-none hover:text-primary mb-2">Pricing</router-link>
             </div>
           </v-col>
@@ -179,14 +179,14 @@
               <a href="https://poy8.com" target="_blank" class="text-body-2 text-medium-emphasis text-decoration-none hover:text-primary mb-2">Poy8</a>
             </div>
           </v-col>
-          
+
           <v-col cols="12" md="3">
             <h4 class="text-subtitle-2 font-weight-bold mb-4 text-high-emphasis">Online Tools</h4>
             <div class="d-flex flex-wrap" style="gap: 12px; row-gap: 8px;">
-              <a 
-                v-for="tool in tools" 
-                :key="tool.id" 
-                :href="tool.url" 
+              <a
+                v-for="tool in tools"
+                :key="tool.id"
+                :href="tool.url"
                 target="_blank"
                 class="text-caption text-medium-emphasis text-decoration-none hover:text-primary"
                 style="min-width: 140px;"
@@ -258,7 +258,7 @@ const toggleTheme = () => {
         // Simple toggle
         themeMode.value = themeMode.value === 'dark' ? 'light' : 'dark'
     }
-    
+
     applyTheme()
 }
 
@@ -275,12 +275,12 @@ const applyTheme = () => {
 onMounted(() => {
     const saved = localStorage.getItem('theme-mode') as 'system' | 'light' | 'dark' | null
     if (saved) themeMode.value = saved
-    
+
     // Listen for system changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
         if (themeMode.value === 'system') applyTheme()
     })
-    
+
     applyTheme()
 })
 
@@ -289,7 +289,7 @@ const navigation = [
   { name: 'OnlineTools', path: '/tools' },
   { name: 'Pricing', path: '/pricing' },
   { name: 'nav.about', path: '/about' },
-  { name: 'MacOS App', path: '/download' }, 
+  { name: 'nav.download', path: '/download' },
   { name: 'nav.blog', path: 'https://blog.memejpg.com', external: true },
 ]
 
