@@ -15,21 +15,91 @@ const latestRelease = ref<any>(null)
 const loadingVersion = ref(true)
 const downloads = ref<DownloadFile[]>([])
 
-// Parse 5-segment filename: Memejpg-1.0.44-windows-standalone-x64.exe
-const parseFilename = (filename: string): DownloadFile | null => {
-  // Pattern: ProjectName-Version-Platform-Type-Arch.Extension
-  const match = filename.match(/^(.+?)-(\d+\.\d+\.\d+)-(\w+)-(\w+)-(\w+)\.(.+)$/)
-  if (!match) return null
+const inferPlatformFromExt = (ext: string) => {
+  const lower = ext.toLowerCase()
+  if (lower === 'dmg' || lower === 'pkg') return 'macos'
+  if (lower === 'exe' || lower === 'msi') return 'windows'
+  if (lower === 'deb' || lower === 'rpm' || lower === 'appimage') return 'linux'
+  return 'unknown'
+}
 
-  const [, , version, platform, type, arch, extension] = match
+// Parse filename (supports legacy formats) and use API-provided URL if present
+const parseAsset = (file: { key: string; url?: string }): DownloadFile | null => {
+  const filename = file.key
 
-  return {
-    name: filename,
-    url: `https://github.com/yyh0808/memejpg-app/releases/download/v${version}/${filename}`,
-    platform: platform.toLowerCase(),
-    arch: arch.toLowerCase(),
-    format: extension.toLowerCase(),
+  // 5-segment: Memejpg-1.0.44-windows-standalone-x64.exe
+  const match5 = filename.match(/^(.+?)-(\d+\.\d+\.\d+)-(\w+)-(\w+)-(\w+)\.(.+)$/)
+  if (match5) {
+    const [, , version, platform, type, arch, extension] = match5
+    return {
+      name: filename,
+      url: file.url || `https://github.com/yyh0808/memejpg-app/releases/download/v${version}/${filename}`,
+      platform: platform.toLowerCase(),
+      arch: arch.toLowerCase(),
+      format: extension.toLowerCase(),
+    }
   }
+
+  // 3-segment: MemeJPG-1.0.0-arm64.dmg
+  const match3 = filename.match(/^(.+?)-(\d+\.\d+\.\d+)-(\w+)\.(.+)$/)
+  if (match3) {
+    const [, , version, arch, extension] = match3
+    const platform = inferPlatformFromExt(extension)
+    return {
+      name: filename,
+      url: file.url || `https://github.com/yyh0808/memejpg-app/releases/download/v${version}/${filename}`,
+      platform,
+      arch: arch.toLowerCase(),
+      format: extension.toLowerCase(),
+    }
+  }
+
+  // 2-segment: MemeJPG-mac-1.0.0.dmg
+  const match2 = filename.match(/^(.+?)-(mac|win|linux|windows|macos)-(\d+\.\d+\.\d+)\.(.+)$/i)
+  if (match2) {
+    const [, , platformName, version, extension] = match2
+    let platform = platformName.toLowerCase()
+    if (platform === 'win' || platform === 'windows') platform = 'windows'
+    if (platform === 'mac' || platform === 'macos') platform = 'macos'
+
+    let arch = 'x64'
+    const lower = filename.toLowerCase()
+    if (lower.includes('arm64') || lower.includes('aarch64') || lower.includes('silicon')) {
+      arch = 'arm64'
+    }
+
+    return {
+      name: filename,
+      url: file.url || `https://github.com/yyh0808/memejpg-app/releases/download/v${version}/${filename}`,
+      platform,
+      arch,
+      format: extension.toLowerCase(),
+    }
+  }
+
+  // Fallback: infer from extension only
+  const extMatch = filename.match(/\.([^.]+)$/)
+  if (extMatch) {
+    const extension = extMatch[1]
+    const platform = inferPlatformFromExt(extension)
+    if (platform === 'unknown') return null
+
+    let arch = 'x64'
+    const lower = filename.toLowerCase()
+    if (lower.includes('arm64') || lower.includes('aarch64')) {
+      arch = 'arm64'
+    }
+
+    return {
+      name: filename,
+      url: file.url || '#',
+      platform,
+      arch,
+      format: extension.toLowerCase(),
+    }
+  }
+
+  return null
 }
 
 // Group downloads by platform
@@ -94,7 +164,7 @@ onMounted(async () => {
         // Parse all files from the latest release
         if (data.latest.files && Array.isArray(data.latest.files)) {
           downloads.value = data.latest.files
-            .map((file: any) => parseFilename(file.key))
+            .map((file: any) => parseAsset({ key: file.key, url: file.url }))
             .filter((f: DownloadFile | null) => f !== null) as DownloadFile[]
         }
       }

@@ -23,4 +23,6 @@ http://www.memejpg.com/*   https://memejpg.com/:splat  301!
 # Note: This is handled by JavaScript canonical tags, but we can also handle server-side
 
 # Handle client-side routing for Vue SPA
+/blog        /blog/index.html  200
+/blog/*      /blog/:splat      200
 /*    /index.html   200

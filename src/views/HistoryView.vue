@@ -24,7 +24,7 @@
     </div>
 
     <div v-else>
-      <v-card v-for="(version, versionIndex) in versions" :key="version.version" class="mb-6 border rounded-lg" variant="flat">
+      <v-card v-for="version in versions" :key="version.version" class="mb-6 border rounded-lg" variant="flat">
         <v-card-title class="d-flex align-center bg-grey-lighten-4 pa-4">
           <v-icon color="primary" class="mr-3">mdi-tag-outline</v-icon>
           <div>
@@ -142,7 +142,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 interface VersionFile {
@@ -171,7 +171,9 @@ const parseFilename = (filename: string) => {
   // Try 5-segment format: Memejpg-1.0.44-windows-standalone-x64.exe
   const match5 = filename.match(/^(.+?)-(\d+\.\d+\.\d+)-(\w+)-(\w+)-(\w+)\.(.+)$/)
   if (match5) {
-    const [, , version, platform, type, arch, extension] = match5
+    const platform = match5[3]
+    const arch = match5[5]
+    const extension = match5[6]
     return {
       platform: platform.toLowerCase(),
       arch: arch.toLowerCase(),
@@ -182,7 +184,8 @@ const parseFilename = (filename: string) => {
   // Try 3-segment format: MemeJPG-1.0.0-arm64.dmg or MemeJPG-1.0.0-x64.dmg
   const match3 = filename.match(/^(.+?)-(\d+\.\d+\.\d+)-(\w+)\.(.+)$/)
   if (match3) {
-    const [, , version, arch, extension] = match3
+    const arch = match3[3]
+    const extension = match3[4]
     const ext = extension.toLowerCase()
 
     // Infer platform from extension
@@ -205,7 +208,8 @@ const parseFilename = (filename: string) => {
   // Try old 2-segment format with platform in name: MemeJPG-mac-1.0.0.dmg
   const match2 = filename.match(/^(.+?)-(mac|win|linux|windows|macos)-(\d+\.\d+\.\d+)\.(.+)$/i)
   if (match2) {
-    const [, , platformName, version, extension] = match2
+    const platformName = match2[2]
+    const extension = match2[4]
     const ext = extension.toLowerCase()
     let platform = platformName.toLowerCase()
     if (platform === 'win' || platform === 'windows') platform = 'windows'
@@ -269,7 +273,7 @@ const formatDate = (dateString: string) => {
       month: 'long',
       day: 'numeric'
     })
-  } catch (e) {
+  } catch {
     return dateString
   }
 }
@@ -369,8 +373,8 @@ const fetchVersions = async () => {
         }),
       }))
     }
-  } catch (e: any) {
-    console.warn("Failed to fetch versions:", e)
+  } catch (err) {
+    console.warn("Failed to fetch versions:", err)
 
     if (window.location.hostname === 'localhost') {
       // Mock data for testing - multiple versions with different file formats
@@ -405,7 +409,7 @@ const fetchVersions = async () => {
         },
       ]
     } else {
-      error.value = e.message || 'Failed to load versions'
+      error.value = err instanceof Error ? err.message : 'Failed to load versions'
     }
   } finally {
     loading.value = false
